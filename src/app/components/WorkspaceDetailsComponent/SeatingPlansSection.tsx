@@ -1,0 +1,34 @@
+"use client";
+
+import { WorkspacePlan } from "@/types/workspace";
+
+
+export default function SeatingPlansSection({ plans }: { plans: WorkspacePlan[] }) {
+  return (
+    <div>
+      <h2 className="mb-4 text-lg font-semibold text-gray-900">Seating Plans</h2>
+      <div className="space-y-4">
+        {plans.map((plan) => (
+          <div
+            key={plan._id}
+            className="flex items-center justify-between rounded-xl border border-gray-200 p-4"
+          >
+            <div>
+              <h3 className="font-medium text-gray-900">{plan.title}</h3>
+              <p className="text-sm text-gray-500">{plan.description}</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <p className="font-semibold text-gray-900">
+                ₹{plan.price.toLocaleString()}
+                <span className="text-xs font-normal text-gray-400">/seat</span>
+              </p>
+              <button className="rounded-lg bg-orange-500 px-4 py-2 text-sm font-medium text-white hover:bg-orange-600">
+                Enquire Now
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

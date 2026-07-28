@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.group .swiper-button-next,
+.group .swiper-button-prev {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Show arrows on card hover */
+.group:hover .swiper-button-next,
+.group:hover .swiper-button-prev {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Common style */
+.group .swiper-button-next,
+.group .swiper-button-prev {
+  width: 25px;
+  height: 25px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #0058be;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Arrow icon size */
+.group .swiper-button-next::after,
+.group .swiper-button-prev::after {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Left Arrow */
+.group .swiper-button-prev {
+  left: 10px;
+  /* right: 10px; */
+  position: absolute;
+  z-index: 9999;
+  top: 37%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.group .swiper-button-prev svg{
+  transform: rotate(180deg);
+}
+.group .swiper-button-prev svg, .group .swiper-button-next svg{
+width: 14px;
+height: 14px;
+}
+
+/* Right Arrow */
+.group .swiper-button-next {
+  right: 10px;
+  position: absolute;
+  z-index: 9999;
+  top: 37%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.service-image{
+  position: relative;
+}
+.service-image::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(180deg, transparent 50%, var(--primary-color) 85.48%);
+    z-index: 1;
+}
+.service-image::after{
+ content: "";
+    position: absolute;
+    width: 200%;
+    height: 0%;
+    left: 50%;
+    top: 50%;
+    background-color: rgba(255, 255, 255, .3);
+    transform: translate(-50%, -50%) rotate(-45deg);
+    z-index: 1;
+}
+.service-image:hover:after {
+    height: 250%;
+    transition: all 600ms linear;
+    background-color: transparent;
+}
