@@ -23,7 +23,7 @@ export const getWorkspaces = async () => {
 };
 
 // GET SINGLE
-export const getSingleWorkspace = async (id:AnyARecord) => {
+export const getSingleWorkspace = async (id:any) => {
   const response = await axiosInstance.get(`/workspace/${id}`);
   return response.data;
 };
