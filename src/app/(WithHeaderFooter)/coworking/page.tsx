@@ -1,7 +1,6 @@
 "use client";
 import CardComponent from "@/app/components/CardComponent/CardComponent";
 import MainHeading from "@/app/components/CommenHeading/MainHeading";
-import EnquiryModal from "@/app/components/CommonModal/EnquiryModal";
 import React, { useState } from "react";
 
 export default function Page() {

@@ -5,6 +5,7 @@ import EnquiryModal from "../CommonModal/EnquiryModal";
 export default function SeatingPlansSection({ plans }: { plans: WorkspacePlan[] }) {
 
  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedSpace, setSelectedSpace] = useState(null);
 
   return (
     <div>
@@ -36,6 +37,7 @@ export default function SeatingPlansSection({ plans }: { plans: WorkspacePlan[] 
       <EnquiryModal
               open={isModalOpen}
               onClose={() => setIsModalOpen(false)}
+                space={selectedSpace}
             />
     </div>
   );

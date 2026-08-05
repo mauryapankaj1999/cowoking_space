@@ -38,7 +38,7 @@ const FOOTER_LINKS = [
 export default function Footer() {
   const year = new Date().getFullYear();
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+ const [selectedSpace, setSelectedSpace] = useState(null);
   return (
     <>
     <footer className="bg-[#FBF7EF] border-t border-border bg-secondary/40 px-6 pt-16">
@@ -117,6 +117,8 @@ export default function Footer() {
  <EnquiryModal
         open={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+  space={selectedSpace}
+
       />
     </>
   );
