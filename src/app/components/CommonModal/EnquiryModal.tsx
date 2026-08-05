@@ -6,6 +6,7 @@ import MainHeading from "../CommenHeading/MainHeading";
 interface Props {
   open: boolean;
   onClose: () => void;
+  space: any;
 }
 
 export default function EnquiryModal({ open,onClose,}: Props) {  
