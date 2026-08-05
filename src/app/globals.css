@@ -97,3 +97,7 @@ height: 14px;
     transition: all 600ms linear;
     background-color: transparent;
 }
+.vertical-text {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+}

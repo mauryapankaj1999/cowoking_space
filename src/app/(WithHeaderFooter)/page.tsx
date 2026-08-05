@@ -12,12 +12,14 @@ import HowItWorks from "../components/HomeComponent/HowItWorks";
 import ExploreByCity from "../components/HomeComponent/ExploreByCity";
 import Testimonials from "../components/HomeComponent/Testimonials";
 import BlogSection from "../components/HomeComponent/BlogSection";
+import HeroSectionNew from "../components/HomeComponent/HeroSectionNew";
 
 export default function Home() {
   return (
     <>
+    <HeroSectionNew  />
     
-    <VideoSection />
+    {/* <VideoSection /> */}
     {/* <HeroSection /> */}
     <FeaturedSpaces />
     {/* <ExploreSpaces /> */}
@@ -26,9 +28,9 @@ export default function Home() {
     <WhatYouGet />
     <Testimonials />
     {/* <HowItWorks /> */}
+    <ComfortableSpaces />
     <BlogSection />
     <OurClientlogo />
-    {/* <ComfortableSpaces /> */}
     {/* <FeatureSection /> */}
     
     

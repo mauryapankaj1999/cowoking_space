@@ -21,27 +21,27 @@ const AREAS = [
     image: "/img/portfolio-13.jpg",
     flex: "lg:flex-[1] lg:hover:flex-[3]",
   },
-  // {
-  //   label: "Dedicated Desk",
-  //   image: "/img/portfolio-14.jpg",
-  //   flex: "lg:flex-[1] lg:hover:flex-[3]",
-  // },
-  // {
-  //   label: "Coffe & Baverage Room",
-  //   image: "/img/portfolio-15.jpg",
-  //   flex: "lg:flex-[1] lg:hover:flex-[3]",
-  // },
+  {
+    label: "Dedicated Desk",
+    image: "/img/portfolio-14.jpg",
+    flex: "lg:flex-[1] lg:hover:flex-[3]",
+  },
+  {
+    label: "Coffe & Baverage Room",
+    image: "/img/portfolio-15.jpg",
+    flex: "lg:flex-[1] lg:hover:flex-[3]",
+  },
 ];
 
 export default function ComfortableSpaces() {
   return (
-    <section className="">
-      {/* <div className="mx-auto max-w-7xl"> */}
-        {/* <div className="">
+    <section className="px-6 py-16 sm:py-12">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-6">
          
           <MainHeading title="You feel comfortable" />  
           
-        </div> */}
+        </div>
 
         <div className="mt-2 flex flex-col gap-4 lg:h-[450px] lg:flex-row">
           {AREAS.map((area) => (
@@ -69,7 +69,7 @@ export default function ComfortableSpaces() {
             </div>
           ))}
         </div>
-      {/* </div> */}
+      </div>
     </section>
   );
 }

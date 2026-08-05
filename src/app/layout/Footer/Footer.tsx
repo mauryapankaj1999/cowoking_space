@@ -1,6 +1,8 @@
 "use client";
 
+import EnquiryModal from "@/app/components/CommonModal/EnquiryModal";
 import Link from "next/link";
+import { useState } from "react";
 import { FiMail, FiPhone } from "react-icons/fi";
 
 const FOOTER_LINKS = [
@@ -8,17 +10,17 @@ const FOOTER_LINKS = [
     title: "Product",
     links: [
       { label: "Coworking", href: "/coworking" },
-      { label: "Coliving", href: "/coliving" },
+      { label: "Manage Office", href: "/coliving" },
       { label: "Virtual Office", href: "/virtual-office" },
-      { label: "Meeting Rooms", href: "/meeting-rooms" },
+      // { label: "Meeting Rooms", href: "/meeting-rooms" },
     ],
   },
   {
     title: "Company",
     links: [
       { label: "About", href: "/about" },
-      { label: "Careers", href: "/careers" },
-      { label: "Press", href: "/press" },
+      // { label: "Careers", href: "/careers" },
+      // { label: "Press", href: "/press" },
       { label: "Contact", href: "/contact" },
     ],
   },
@@ -35,8 +37,10 @@ const FOOTER_LINKS = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
+    <>
     <footer className="bg-[#FBF7EF] border-t border-border bg-secondary/40 px-6 pt-16">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
@@ -102,5 +106,18 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+    <div className="fixed right-0 top-1/2 -translate-y-1/2 z-[99999]">
+      <button onClick={() => setIsModalOpen(true)} className="bg-white text-[#1764D8] border border-[#1764D8] rounded-l-lg px-3 py-4 font-semibold shadow-lg hover:bg-[#1764D8] hover:text-white transition-all duration-300">
+        <span className="[writing-mode:vertical-rl] whitespace-nowrap">
+          Book a demo
+        </span>
+      </button>
+    </div>
+
+ <EnquiryModal
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+    </>
   );
 }

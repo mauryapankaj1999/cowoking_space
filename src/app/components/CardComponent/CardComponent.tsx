@@ -85,9 +85,9 @@ export default function CardComponent({ item }: any) {
             </div>
           </div>
 
-          <div className="mb-4 flex items-center gap-2 text-sm text-slate-500">
+          <div className="mb-4 flex items-center gap-2 text-sm text-slate-500 ">
             <FaMapMarkerAlt />
-            <span>{item.location}</span>
+            <span className="line-clamp-1">{item.location}</span>
           </div>
 
           <div className="flex items-center justify-between">

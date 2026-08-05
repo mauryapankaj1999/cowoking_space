@@ -38,7 +38,7 @@ const blogs = [
 
 export default function BlogSection() {
   return (
-    <section className="bg-white px-6 py-16 sm:py-12">
+    <section className="relative overflow-hidden bg-gradient-to-br from-amber-50 via-orange-50/40 to-blue-50 px-6 py-16 sm:py-12">
       <div className="mx-auto max-w-7xl">
         <MainHeading title="Blog" />
         

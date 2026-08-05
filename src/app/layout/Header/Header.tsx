@@ -141,9 +141,9 @@ export default function Header() {
 
   const menus = [
     { title: "Coworking", link: "/coworking" },
-    { title: "Coliving", link: "/coliving" },
+    { title: "Manage Office", link: "/coliving" },
     { title: "Virtual Office", link: "/virtual-office" },
-    { title: "Enterprise", link: "/enterprise" },
+    // { title: "Enterprise", link: "/enterprise" },
   ];
 
   // sirf home page ke top pe (video ke upar), scroll se pehle transparent

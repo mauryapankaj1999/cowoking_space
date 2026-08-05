@@ -12,13 +12,8 @@ export interface WorkspacePlan {
 }
 
 export interface OfficeTiming {
-  monday: string;
-  tuesday: string;
-  wednesday: string;
-  thursday: string;
-  friday: string;
-  saturday: string;
-  sunday: string;
+  label: string;
+  value: string;
 }
 
 export interface Workspace {
@@ -39,5 +34,5 @@ export interface Workspace {
   plans: WorkspacePlan[];
   amenities: string[];
   community: string[];
-  officeTiming: OfficeTiming;
+   officeTiming: OfficeTiming[];
 }

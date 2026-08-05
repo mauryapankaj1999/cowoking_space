@@ -9,6 +9,8 @@ import OfficeTimingSection from "@/app/components/WorkspaceDetailsComponent/Offi
 import AmenitiesSection from "@/app/components/WorkspaceDetailsComponent/AmenitiesSection";
 import LocationSection from "@/app/components/WorkspaceDetailsComponent/LocationSection";
 import { getWorkspaceBySlug } from "@/api/workspaceApi";
+import FaqSection from "@/app/components/FaqSection/FaqSection";
+import RelatedWorkspaces from "@/app/components/Relatedworkspaces/Relatedworkspaces";
 
 export default async function WorkspaceDetailsPage({
   params,
@@ -17,31 +19,65 @@ export default async function WorkspaceDetailsPage({
 }) {
   const data = await getWorkspaceBySlug(params.workspaceSlug);
 
-  console.log(data);
+  console.log(data, "details data from services card main");
 
   return (
     <>
-      <MulitipleSliderSection />
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16">
-        <div className="grid grid-cols-12">
-          <div className="col-span-8">
-            <SeatingPlansSection plans={data.plans} />
-            <AboutWorkspaceSection
-              name={data.name}
-              description={data.description}
-            />
-            <OfficeTimingSection timing={data.officeTiming} />
-             <AmenitiesSection amenities={data.amenities} />
-        <LocationSection
-          address={data.address}
-          latitude={data.latitude}
-          longitude={data.longitude}
-        />
-          </div>
-          <div className="col-span-4">
-            <Enqueryform />
+      <div className="mt-16">
+        <MulitipleSliderSection images={data.images} />
+
+        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16">
+          <div className="grid grid-cols-12 gap-8">
+            <div className="col-span-8">
+
+              <SeatingPlansSection  plans={data.plans} />
+
+              <div className="my-8">
+                <hr />
+              </div>
+
+              <AboutWorkspaceSection
+                name={data.name}
+                description={data.description}
+              />
+              <div className="my-8">
+                <hr />
+              </div>
+
+              <OfficeTimingSection timing={data.officeTiming} />
+
+              <div className="my-8">
+                <hr />
+              </div>
+
+              <AmenitiesSection amenities={data.amenities} />
+
+              <div className="my-8">
+                <hr />
+              </div>
+
+              <LocationSection
+                address={data.address}
+                latitude={data.latitude}
+                longitude={data.longitude}
+              />
+            </div>
+            <div className="col-span-4 ">
+              <div className="sticky top-20">
+                <Enqueryform />
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+
+      <div className="mx-auto grid max-w-7xl gap-12 mb-8">
+
+        <RelatedWorkspaces citySlug={params.citySlug} currentSlug={params.workspaceSlug} 
+          cityName={data.category?.name}
+         />
+         
+        <FaqSection />
       </div>
     </>
   );

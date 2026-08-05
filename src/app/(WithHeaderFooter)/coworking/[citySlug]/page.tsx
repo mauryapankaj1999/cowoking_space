@@ -10,8 +10,6 @@ import { useWorkspacesBySlug } from "@/hooks/useWorkspace";
 
 export default function Page() {
   const { citySlug } = useParams(); 
-//   const { citySlug } = useParams();
-
   const [activeTab, setActiveTab] = useState(null); 
   const [open, setOpen] = useState(false);
   const [selectedSpace, setSelectedSpace] = useState(null);
@@ -27,14 +25,14 @@ export default function Page() {
   const tabslist = subCategoryData?.data || [];
   const workspaces = workspaceData?.data || [];
 
-  const handleOpen = (item) => {
+  const handleOpen = (item: any) => {
     setSelectedSpace(item);
     setOpen(true);
   };
 
   return (
     <>
-      <section className="bg-white px-10 py-10">
+      <section className="bg-white px-10 py-10 mt-12">
         <div className="mx-auto max-w-7xl">
           <MainHeading title={`Coworking Space In ${cityName}`} />
 
@@ -50,7 +48,7 @@ export default function Page() {
               >
                 All
               </li>
-              {tabslist.map((item) => (
+              {tabslist.map((item:any) => (
                 <li
                   key={item._id}
                   onClick={() => setActiveTab(item.slug)}
@@ -74,7 +72,7 @@ export default function Page() {
             <p className="text-slate-500">No workspaces found.</p>
           ) : (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {workspaces.map((ws) => (
+              {workspaces.map((ws:any) => (
                 <CardComponent
                   key={ws._id}
                   item={{
@@ -85,7 +83,7 @@ export default function Page() {
                     rating: ws.rating || 0,
                     location: ws.address,
                     price: ws.plans?.[0]?.price || 0,
-                    images: ws.images?.map((img) => img.url) || [],
+                    images: ws.images?.map((img: any) => img.url) || [],
                   }}
                   onQuoteClick={handleOpen}
                 />
