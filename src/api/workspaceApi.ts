@@ -1,5 +1,6 @@
 import { Workspace } from "@/types/workspace";
 import axiosInstance from "./axiosInstance";
+import { AnyARecord } from "node:dns";
 
 export const getWorkspacesBySlug = async (citySlug: string, subCategorySlug?: string) => {
   const url = subCategorySlug
@@ -22,7 +23,7 @@ export const getWorkspaces = async () => {
 };
 
 // GET SINGLE
-export const getSingleWorkspace = async (id) => {
+export const getSingleWorkspace = async (id:AnyARecord) => {
   const response = await axiosInstance.get(`/workspace/${id}`);
   return response.data;
 };
