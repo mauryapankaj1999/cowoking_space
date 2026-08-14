@@ -2,6 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@font-face {
+  font-family: "Financier Display";
+  src: url("/fonts/FinancierDisplay-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Financier Display";
+  src: url("/fonts/FinancierDisplay-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Financier Display";
+  src: url("/fonts/FinancierDisplay-Semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Financier Display";
+  src: url("/fonts/FinancierDisplay-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Financier Text";
+  src: url("/fonts/FinancierText-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Financier Text";
+  src: url("/fonts/FinancierText-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Financier Text";
+  src: url("/fonts/FinancierText-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 .group .swiper-button-next,
 .group .swiper-button-prev {
   opacity: 0;

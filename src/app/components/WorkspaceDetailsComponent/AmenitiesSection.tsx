@@ -10,7 +10,7 @@ import {
   FiCheckCircle,
 } from "react-icons/fi";
 
-const iconMap: Record<string, React.ReactNode> = {
+const iconMap: Record<any, React.ReactNode> = {
   "High Speed WiFi": <FiWifi />,
   "Meeting Rooms": <FiUsers />,
   "Ergo Workstations": <FiHome />,

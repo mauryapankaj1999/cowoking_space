@@ -19,9 +19,9 @@ const FOOTER_LINKS = [
     title: "Company",
     links: [
       { label: "About", href: "/about" },
-      // { label: "Careers", href: "/careers" },
-      // { label: "Press", href: "/press" },
       { label: "Contact", href: "/contact" },
+      { label: "Blog", href: "/blog" },
+      // { label: "Press", href: "/press" },
     ],
   },
   {

@@ -7,9 +7,14 @@ import { useCategories } from "@/hooks/useCategory";
 
 const lookingForOptions = [
   "Coworking Space",
-  "Coliving Space",
+  "Manage Space",
+  "Office/Commercial",
+  "Flexi Desk",
+  "Dedicated Desk",
   "Virtual Office",
-  "Meeting Room",
+  "Meeting Rooms",
+  "Day Pass",
+  
 ];
 
 export default function VideoSection() {
@@ -48,20 +53,28 @@ export default function VideoSection() {
       <div className="absolute inset-0 bg-black/40 z-10"></div>
 
       <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4">
-        <h1 className="text-white text-4xl md:text-6xl lg:text-6xl font-medium leading-tight">
-          Find Your Perfect <br />
-          Coworking Space
+        <h1 className="text-white font-financierDisplay text-4xl md:text-6xl lg:text-6xl font-bold leading-tight">
+          Find Your <span >Space </span> <br />
+        
         </h1>
 
-        <p className="mt-6 max-w-2xl
+        <p className="mt-6 max-w-3xl
          text-white  font-light
          text-base md:text-lg">
-          Discover premium coworking spaces with modern amenities, flexible
-          plans, and inspiring work environments across Delhi, Noida & Gurgaon.
+         Find Premium Coworking and Office Spaces Perfectly Suited for Your Growing Team
         </p>
 
-        <div className="mt-10 w-full max-w-3xl">
-          <div className="relative z-30 flex flex-col gap-2 rounded-2xl border border-white/30 bg-white/20 p-2 shadow-2xl backdrop-blur-xl md:flex-row md:items-center md:rounded-full">
+        <div className="mt-10 w-full max-w-4xl">
+          {/* <div className="
+            relative z-30 flex flex-col gap-2 rounded-2xl border
+           border-white/30 bg-white/20 p-2 shadow-2xl backdrop-blur-xl 
+           md:flex-row md:items-center md:rounded-full"
+           > */}
+          <div className="
+            relative z-30 flex flex-col gap-2 border
+           border-white/30 bg-white/20 p-6 shadow-2xl backdrop-blur-xl 
+           md:flex-row md:items-center md:rounded-xl"
+           >
             <div className="relative flex-1">
               <button
                 type="button"
@@ -69,17 +82,17 @@ export default function VideoSection() {
                   setLookingOpen(!lookingOpen);
                   setCityOpen(false);
                 }}
-                className="flex w-full items-center gap-2 rounded-xl bg-white px-4 py-3 text-left hover:bg-slate-50 md:rounded-full"
+                className="flex w-full items-center gap-2 rounded-xl bg-white px-4 py-4 text-left hover:bg-slate-50 md:rounded-xl"
               >
                 <FiBriefcase className="h-4 w-4 shrink-0 text-slate-400" />
-                <span className="flex-1 truncate text-sm font-medium text-slate-700">
+                <span className="flex-1 truncate text-sm font-medium text-primary">
                   {lookingFor}
                 </span>
                 <FiChevronDown className="h-4 w-4 shrink-0 text-slate-400" />
               </button>
 
               {lookingOpen && (
-                <div className="absolute left-0 top-full z-30 mt-2 w-full min-w-[200px] rounded-xl bg-white p-2 text-left shadow-xl">
+                <div className="absolute left-0 top-full z-30 mt-2 w-full min-w-[200px] rounded-xl bg-white p-2 text-left shadow-xl max-h-60 overflow-y-auto">
                   {lookingForOptions.map((opt) => (
                     <button
                       key={opt}
@@ -87,7 +100,7 @@ export default function VideoSection() {
                         setLookingFor(opt);
                         setLookingOpen(false);
                       }}
-                      className="block w-full rounded-lg px-3 py-2 text-left text-sm text-slate-700 hover:bg-slate-100"
+                      className="block w-full text-primary rounded-lg px-3 py-2 text-left text-sm text-slate-700 hover:bg-slate-100"
                     >
                       {opt}
                     </button>
@@ -96,7 +109,6 @@ export default function VideoSection() {
               )}
             </div>
 
-            {/* City dropdown (dynamic) */}
             <div className="relative flex-1">
               <button
                 type="button"
@@ -104,10 +116,10 @@ export default function VideoSection() {
                   setCityOpen(!cityOpen);
                   setLookingOpen(false);
                 }}
-                className="flex w-full items-center gap-2 rounded-xl bg-white px-4 py-3 text-left hover:bg-slate-50 md:rounded-full"
+                className="flex w-full items-center gap-2 rounded-xl bg-white px-4 py-4 text-left hover:bg-slate-50 md:rounded-xl"
               >
                 <FiMapPin className="h-4 w-4 shrink-0 text-slate-400" />
-                <span className="flex-1 truncate text-sm font-medium text-slate-700">
+                <span className="flex-1 truncate text-sm font-medium text-primary">
                   {selectedCity?.name || "Select City"}
                 </span>
                 <FiChevronDown className="h-4 w-4 shrink-0 text-slate-400" />
@@ -134,12 +146,11 @@ export default function VideoSection() {
               )}
             </div>
 
-            {/* Find Space button with loader */}
             <button
               type="button"
               onClick={handleSearch}
               disabled={!selectedCity || searching}
-              className="flex items-center justify-center gap-2 rounded-xl bg-[#57A846] px-6 py-3 font-semibold text-white transition-colors hover:bg-[#4a933c] disabled:cursor-not-allowed disabled:opacity-60 md:rounded-full"
+              className="flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 font-semibold text-white transition-colors hover:bg-[#4a933c] disabled:cursor-not-allowed disabled:opacity-60 md:rounded-xl"
             >
               {searching ? (
                 <FiLoader className="h-4 w-4 animate-spin" />
@@ -150,13 +161,12 @@ export default function VideoSection() {
             </button>
           </div>
 
-          {/* Top cities - z-10 removed so it stays below the search bar's dropdowns */}
           <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
             {categories.slice(0, 6).map((cat: any) => (
               <div
                 key={cat._id}
                 onClick={() => setSelectedCity(cat)}
-                className="flex items-center gap-1.5 rounded-full border border-white/30 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur-sm transition hover:border-white/60 hover:bg-white/15 hover:text-white cursor-pointer"
+                className="flex items-center gap-1.5 rounded-full border border-white/30 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur-sm transition hover:border-white/60 hover:bg-primary hover:text-white cursor-pointer"
               >
                 <FiMapPin className="h-3.5 w-3.5" />
                 {cat.name}

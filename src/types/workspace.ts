@@ -29,10 +29,10 @@ export interface Workspace {
   city: string;
   state: string;
   pincode: string;
-  latitude: string;
-  longitude: string;
+  mapLink?: string; 
   plans: WorkspacePlan[];
   amenities: string[];
   community: string[];
    officeTiming: OfficeTiming[];
+   connectivity: string[]
 }

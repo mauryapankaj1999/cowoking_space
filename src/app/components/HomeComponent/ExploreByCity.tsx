@@ -14,7 +14,8 @@ export default function ExploreByCity() {
   }
 
   return (
-    <section className="bg-[#FAF6ED] px-6 py-16 sm:py-12">
+    // <section className="bg-[#FAF6ED] px-6 py-16 sm:py-12">
+    <section className=" px-6 py-16 sm:py-12">
       <div className="mx-auto max-w-7xl">
         <div className="mb-6">
           <MainHeading title="Explore by city" />

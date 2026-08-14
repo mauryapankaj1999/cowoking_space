@@ -17,13 +17,13 @@ import HeroSectionNew from "../components/HomeComponent/HeroSectionNew";
 export default function Home() {
   return (
     <>
-    <HeroSectionNew  />
+    {/* <HeroSectionNew  /> */}
     
-    {/* <VideoSection /> */}
-    {/* <HeroSection /> */}
+    <VideoSection />
+    <HeroSection />
     <FeaturedSpaces />
     {/* <ExploreSpaces /> */}
-    <ServicesCardMain />
+    {/* <ServicesCardMain /> */}
     <ExploreByCity />
     <WhatYouGet />
     <Testimonials />

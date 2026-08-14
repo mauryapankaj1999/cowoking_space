@@ -35,7 +35,7 @@ const AREAS = [
 
 export default function ComfortableSpaces() {
   return (
-    <section className="px-6 py-16 sm:py-12">
+    <section className="px-6 py-16 sm:py-2">
       <div className="mx-auto max-w-7xl">
         <div className="mb-6">
          

@@ -57,7 +57,6 @@ export default function ServicesCardMain() {
                   <div className="pointer-events-none absolute left-1/2 top-1/2 z-[1] h-0 w-[200%] -translate-x-1/2 -translate-y-1/2 -rotate-45 bg-white/30 transition-all duration-[600ms] ease-linear group-hover:h-[250%] group-hover:bg-transparent" />
                 </div>
 
-                {/* Darker gradient overlay */}
                 <div className="absolute inset-0 z-[1] bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
               </figure>
 

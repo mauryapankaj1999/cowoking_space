@@ -13,6 +13,16 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        primary: "#003F2D",
+        textPrimary: "#5A6769",
+        secondary: "#1764D8",
+        accent: "#F8F9FF",
+      },
+       fontFamily: {
+        financierDisplay: ["Financier Display", "serif"],
+        financierText: ["Financier Text", "serif"],
+      },
     },
   },
   plugins: [],

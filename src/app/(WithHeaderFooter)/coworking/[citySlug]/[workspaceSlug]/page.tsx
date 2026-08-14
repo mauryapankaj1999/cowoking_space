@@ -11,6 +11,7 @@ import LocationSection from "@/app/components/WorkspaceDetailsComponent/Location
 import { getWorkspaceBySlug } from "@/api/workspaceApi";
 import FaqSection from "@/app/components/FaqSection/FaqSection";
 import RelatedWorkspaces from "@/app/components/Relatedworkspaces/Relatedworkspaces";
+import ConnectivitySection from "@/app/components/WorkspaceDetailsComponent/ConnectivitySection";
 
 export default async function WorkspaceDetailsPage({
   params,
@@ -29,8 +30,7 @@ export default async function WorkspaceDetailsPage({
         <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16">
           <div className="grid grid-cols-12 gap-8">
             <div className="col-span-8">
-
-              <SeatingPlansSection  plans={data.plans} />
+              <SeatingPlansSection plans={data.plans} />
 
               <div className="my-8">
                 <hr />
@@ -56,11 +56,14 @@ export default async function WorkspaceDetailsPage({
                 <hr />
               </div>
 
-              <LocationSection
-                address={data.address}
-                latitude={data.latitude}
-                longitude={data.longitude}
-              />
+              <LocationSection address={data.address} mapLink={data.mapLink} />
+              <div className="my-8">
+                <hr />
+              </div>
+              <ConnectivitySection connectivity={data.connectivity} />
+              <div className="my-8">
+                <hr />
+              </div>
             </div>
             <div className="col-span-4 ">
               <div className="sticky top-20">
@@ -72,12 +75,13 @@ export default async function WorkspaceDetailsPage({
       </div>
 
       <div className="mx-auto grid max-w-7xl gap-12 mb-8">
-
-        <RelatedWorkspaces citySlug={params.citySlug} currentSlug={params.workspaceSlug} 
+        <RelatedWorkspaces
+          citySlug={params.citySlug}
+          currentSlug={params.workspaceSlug}
           cityName={data.category?.name}
-         />
-         
-        <FaqSection />
+        />
+
+        {/* <FaqSection /> */}
       </div>
     </>
   );
