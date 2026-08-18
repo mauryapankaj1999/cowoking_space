@@ -1,7 +1,6 @@
 "use client";
-
+import { useState } from "react";
 import { IoClose } from "react-icons/io5";
-import MainHeading from "../CommenHeading/MainHeading";
 
 interface Props {
   open: boolean;
@@ -9,103 +8,212 @@ interface Props {
   space: any;
 }
 
-export default function EnquiryModal({ open,onClose,}: Props) {  
- if (!open) return null; 
+const PRIMARY = "#003F2D";
+
+export default function EnquiryModal({ open, onClose, space }: Props) {
+  const [form, setForm] = useState({
+    name: "",
+    designation: "",
+    companyName: "",
+    workEmail: "",
+    phone: "",
+    seats: "",
+    budget: "",
+    preferredLocation: "",
+    message: space
+      ? `I'm interested in ${space?.title || ""} by ${space?.operator || ""} (${space?.location || ""}).`
+      : "",
+  });
+
+  if (!open) return null;
+
+  const handleChange = (field: string, value: string) => {
+    setForm((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(form);
+    // TODO: replace with actual lead-submission API call
+  };
+
   return (
     <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 p-5">
-      <div className="relative w-full max-w-5xl overflow-hidden rounded-2xl bg-white">
-
+      <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-10">
         {/* Close */}
         <button
           onClick={onClose}
-          className="absolute right-5 top-5 z-20 text-3xl"
+          className="absolute right-5 top-5 z-20 text-3xl text-slate-500 hover:text-slate-800"
         >
           <IoClose />
         </button>
 
-        <div className="grid md:grid-cols-2">
+        <h2 className="mb-1 text-lg font-semibold text-gray-900">
+          Get a quote{space?.title ? ` for ${space.title}` : ""}
+        </h2>
 
-          {/* Left */}
-          <div className="bg-[#EDF6FF] p-10">
+        <p className="mb-6 text-[13px] text-slate-500">
+          Share your details and our team will reach out within one business
+          day.
+        </p>
 
-        <MainHeading title=" Find Your Perfect Office Now" />
-            <p className="mt-5 text-slate-600 text-[13px]">
-              Our experts will help you find the best office according to your
-              needs.
-            </p>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <Field
+              label="Name"
+              required
+              placeholder="Aanya Sharma"
+              value={form.name}
+              onChange={(v) => handleChange("name", v)}
+            />
+            <Field
+              label="Designation"
+              required
+              placeholder="Head of Operations"
+              value={form.designation}
+              onChange={(v) => handleChange("designation", v)}
+            />
+          </div>
 
-            <div className="mt-8 space-y-4">
-              <div className="text-[13px]">✔ Customized Workspaces</div>
-              <div className="text-[13px]">✔ Prime Locations</div>
-              <div className="text-[13px]">✔ Flexible Terms</div>
-              <div className="text-[13px]">✔ Free Guided Tours</div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <Field
+              label="Company Name"
+              required
+              placeholder="Acme Labs"
+              value={form.companyName}
+              onChange={(v) => handleChange("companyName", v)}
+            />
+            <Field
+              label="Work Email"
+              required
+              type="email"
+              placeholder="you@company.com"
+              value={form.workEmail}
+              onChange={(v) => handleChange("workEmail", v)}
+            />
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <Field
+              label="Phone"
+              required
+              type="tel"
+              placeholder="+91 98xxxxxxxx"
+              value={form.phone}
+              onChange={(v) => handleChange("phone", v)}
+            />
+
+            <div>
+              <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-primary">
+                Seats Needed <span className="text-red-500">*</span>
+              </label>
+              <select
+                required
+                value={form.seats}
+                onChange={(e) => handleChange("seats", e.target.value)}
+                className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+              >
+                <option value="">How many seats?</option>
+                <option>1 to 10</option>
+              <option>11 to 50</option>
+              <option>51 to 100</option>
+              <option>ABOVE 100</option>
+              </select>
             </div>
           </div>
 
-          {/* Right */}
-          <div className="p-10">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <Field
+              label="Budget (₹)"
+              required
+              placeholder="e.g. 1,50,000 per month"
+              value={form.budget}
+              onChange={(v) => handleChange("budget", v)}
+            />
 
-            <h2 className="mb-3 text-lg font-semibold text-gray-900">
-              Interested in this Property
-            </h2>
-
-            <p className="mb-8 text-slate-500 text-[13px]">
-              Fill your details for a customized quote
-            </p>
-
-            <form className="space-y-5">
-
-              <input
-                className="w-full rounded-lg border p-3"
-                placeholder="Name"
-              />
-
-              <input
-                className="w-full rounded-lg border p-3"
-                placeholder="Email"
-              />
-            
-
-              <input
-                className="w-full rounded-lg border p-3"
-                placeholder="Phone"
-              />
-
-              <div className="grid grid-cols-1 gap-4">
-
-                <select className="rounded-lg border p-3">
-                  <option>Type of Seat</option>
-                  <option>0 to 10</option>
-                  <option>11 to 20</option>
-                  <option>21 to 30</option>
-                  <option>31 to 40</option>
-                  <option>41 to 50</option>
-                  <option>51 to 60</option>
-                  <option>61 to 70</option>
-                  <option>71 to 80</option>
-                  <option>81 to 90</option>
-                  <option>91 to 100</option>
-                </select>
-
-                {/* <select className="rounded-lg border p-3">
-                  <option>No. Of Seats</option>
-                </select> */}
-
-              </div>
-
-              <button
-                className="w-full rounded-lg bg-[#0058BE] py-4 text-white"
+            <div>
+              <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-primary">
+                Preferred Location <span className="text-red-500">*</span>
+              </label>
+              <select
+                required
+                value={form.preferredLocation}
+                onChange={(e) =>
+                  handleChange("preferredLocation", e.target.value)
+                }
+                className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
               >
-                Submit
-              </button>
-
-            </form>
-
+                <option value="">Select location</option>
+                <option>Delhi</option>
+                <option>Gurugram</option>
+                <option>Noida</option>
+              </select>
+            </div>
           </div>
 
-        </div>
+          <div>
+            <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-primary">
+              Message <span className="text-red-500">*</span>
+            </label>
+            <textarea
+              required
+              rows={3}
+              value={form.message}
+              onChange={(e) => handleChange("message", e.target.value)}
+              className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+            />
+          </div>
 
+          <div className="flex items-center justify-end gap-3 pt-2">
+            <button
+              type="button"
+              onClick={onClose}
+              className="rounded-lg border border-slate-200 px-6 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              style={{ backgroundColor: PRIMARY }}
+              className="rounded-lg px-6 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
+            >
+              Get Quote
+            </button>
+          </div>
+        </form>
       </div>
+    </div>
+  );
+}
+
+function Field({
+  label,
+  value,
+  onChange,
+  placeholder,
+  type = "text",
+  required,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  placeholder?: string;
+  type?: string;
+  required?: boolean;
+}) {
+  return (
+    <div>
+      <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-primary">
+        {label} {required && <span className="text-red-500">*</span>}
+      </label>
+      <input
+        type={type}
+        required={required}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700 outline-none placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary"
+      />
     </div>
   );
 }

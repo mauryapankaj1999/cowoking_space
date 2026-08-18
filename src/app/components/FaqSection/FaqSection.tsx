@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FiPlus, FiMinus } from "react-icons/fi";
+import MainHeading from "../CommenHeading/MainHeading";
 
 interface FaqItem {
   question: string;
@@ -58,9 +59,9 @@ export default function FaqSection({
 
   return (
     <section>
-      <h2 className="mb-10 text-lg font-semibold text-gray-900">{title}</h2>
-
-      <div className="divide-y divide-slate-200 border-t border-slate-200">
+      {/* <h2 className="mb-10 text-lg font-semibold text-gray-900">{title}</h2> */}
+<MainHeading title={title} />
+      <div className="divide-y mt-6 divide-slate-200 border-t border-slate-200">
         {faqs.map((faq, index) => {
           const isOpen = openIndex === index;
 

@@ -9,7 +9,8 @@ import { useCategories } from "@/hooks/useCategory";
 import { useOperators } from "@/hooks/useOperator";
 
 import NavDropdown from "@/app/components/NavDropdown";
-import { useWorkspaceCategories } from "@/hooks/useworkspaceCategory";
+// import { useWorkspaceCategories } from "@/hooks/useworkspaceCategory";
+import { useWorkspaceCategories } from "@/hooks/useWorkspaceCategory";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -35,7 +36,7 @@ export default function Header() {
   const operators = operatorsData?.data || [];
 
   const menus = [
-    { title: "About Us", link: "/About" },
+    { title: "About Us", link: "/about" },
     // { title: "Virtual Office", link: "/virtual-office" },
   ];
 
@@ -69,7 +70,7 @@ export default function Header() {
             <NavDropdown
               label="Cities"
               items={cities}
-              basePath="/coworking"
+                basePath="/coworking"
               isTransparent={isTransparent}
               loading={citiesLoading}
             />
@@ -85,7 +86,7 @@ export default function Header() {
             <NavDropdown
               label="Operators"
               items={operators}
-              basePath="/operator"
+               basePath="/operator"
               isTransparent={isTransparent}
               loading={operatorsLoading}
             />
@@ -127,10 +128,10 @@ export default function Header() {
             </a>
 
             <button
-              className={`rounded-md px-6 py-3 font-medium transition-all duration-300 ${
+              className={`rounded-md px-4 py-2 text-[13px] font-medium transition-all duration-300 ${
                 isTransparent
                   ? "bg-white text-slate-900 hover:bg-white/90"
-                  : "bg-slate-900 text-white hover:bg-slate-800"
+                  : "bg-primary text-white hover:bg-promary-800"
               }`}
             >
               List your space
@@ -211,7 +212,7 @@ export default function Header() {
               +91 93556 89999
             </a>
 
-            <button className="mt-4 rounded-md bg-slate-900 py-3 font-medium text-white">
+            <button className="mt-4 rounded-md bg-primary px-6 py-3 font-medium text-white">
               List your space
             </button>
           </div>

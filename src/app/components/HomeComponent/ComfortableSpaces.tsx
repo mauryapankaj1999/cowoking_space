@@ -35,11 +35,11 @@ const AREAS = [
 
 export default function ComfortableSpaces() {
   return (
-    <section className="px-6 py-16 sm:py-2">
+    <section className="px-6">
       <div className="mx-auto max-w-7xl">
         <div className="mb-6">
          
-          <MainHeading title="You feel comfortable" />  
+          <MainHeading title="" />  
           
         </div>
 

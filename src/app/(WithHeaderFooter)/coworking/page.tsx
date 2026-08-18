@@ -140,6 +140,8 @@ const [selectedSpace, setSelectedSpace] = useState(null);
 
   return (
     <>
+
+
       <section className="bg-white px-10 py-10">
         <div className="mx-auto max-w-7xl">
           <MainHeading title="Coworking Space In Gurgaon" />

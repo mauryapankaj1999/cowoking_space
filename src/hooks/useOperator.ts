@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getOperators, getOperator } from "@/api/operatorApi";
+import { getOperators, getOperator, getOperatorByParam } from "@/api/operatorApi";
 
 export const useOperators = () => {
   return useQuery({
@@ -13,5 +13,12 @@ export const useOperator = (id: string) => {
     queryKey: ["operator", id],
     queryFn: () => getOperator(id),
     enabled: !!id,
+  });
+};
+export const useOperatorByParam = (param: any) => {
+  return useQuery({
+    queryKey: ["operator", "param", param],
+    queryFn: () => getOperatorByParam(param),
+    enabled: !!param,
   });
 };

@@ -27,3 +27,17 @@ export const getSingleWorkspace = async (id:any) => {
   const response = await axiosInstance.get(`/workspace/${id}`);
   return response.data;
 };
+
+export const getWorkspacesByCategory = async (categoryId: string) => {
+  const response = await axiosInstance.get(`/workspace/workspacecategory/${categoryId}`);
+  return response.data;
+};
+const isObjectId = (val: string) => /^[0-9a-fA-F]{24}$/.test(val);
+
+export const getWorkspacesByOperator = async (param: string) => {
+  const url = isObjectId(param)
+    ? `/workspace/operator/${param}`
+    : `/workspace/operator/slug/${param}`;
+  const response = await axiosInstance.get(url);
+  return response.data;
+};

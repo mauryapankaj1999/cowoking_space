@@ -3,14 +3,14 @@ import { getCategories, getCategory, getCategoryBySlug } from "@/api/workspaceCa
 
 export const useWorkspaceCategories = () => {
   return useQuery({
-    queryKey: ["workspace-categories"],
+    queryKey: ["workspacecategories"],
     queryFn: getCategories,
   });
 };
 
-export const useWorkspaceCategory = (id: string) => {
+export const useWorkspaceCategory = (id: any) => {
   return useQuery({
-    queryKey: ["workspace-category", id],
+    queryKey: ["workspacecategory", id],
     queryFn: () => getCategory(id),
     enabled: !!id,
   });
@@ -18,7 +18,7 @@ export const useWorkspaceCategory = (id: string) => {
 
 export const useWorkspaceCategoryBySlug = (slug: string) => {
   return useQuery({
-    queryKey: ["workspace-category-slug", slug],
+    queryKey: ["workspacecategory-slug", slug],
     queryFn: () => getCategoryBySlug(slug),
     enabled: !!slug,
   });

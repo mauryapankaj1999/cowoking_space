@@ -1,4 +1,3 @@
-// "use client";
 import { FiMapPin, FiClock } from "react-icons/fi";
 import { FaStar } from "react-icons/fa";
 import MulitipleSliderSection from "@/app/components/WorkspaceDetailsComponent/MulitipleSliderSection";
@@ -24,64 +23,67 @@ export default async function WorkspaceDetailsPage({
 
   return (
     <>
-      <div className="mt-16">
-        <MulitipleSliderSection images={data.images} />
+      <div className="mt-16 bg-white">
+        {/* <MulitipleSliderSection images={data.images} /> */}
+        <MulitipleSliderSection
+  images={data.images}
+  workspaceName={data.name}
+  consultant={{
+    name: "Pankaj Maurya",
+    phone: "+91 8130000071",
+  }}
+/>
 
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16">
-          <div className="grid grid-cols-12 gap-8">
-            <div className="col-span-8">
-              <SeatingPlansSection plans={data.plans} />
+        <div className="bg-[#F9FBFC]">
+          <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16">
+            <div className="grid grid-cols-12 gap-8">
+              <div className="col-span-12 lg:col-span-8">
+                <div className="space-y-10 ">
+                  <AboutWorkspaceSection
+                    name={data.name}
+                    description={data.description}
+                  />
 
-              <div className="my-8">
-                <hr />
+                  <hr className="border-slate-100" />
+                  <SeatingPlansSection plans={data.plans} />
+
+
+                  <hr className="border-slate-100" />
+
+                  <OfficeTimingSection timing={data.officeTiming} />
+
+                  <hr className="border-slate-100" />
+
+                  <AmenitiesSection amenities={data.amenities} />
+
+                  <hr className="border-slate-100" />
+
+                  <LocationSection
+                    address={data.address}
+                    mapLink={data.mapLink}
+                  />
+
+                  <hr className="border-slate-100" />
+
+                  <ConnectivitySection connectivity={data.connectivity} />
+                </div>
               </div>
 
-              <AboutWorkspaceSection
-                name={data.name}
-                description={data.description}
-              />
-              <div className="my-8">
-                <hr />
-              </div>
+              <div className="col-span-12 lg:col-span-4">
+                <div className="sticky top-20">
+                      <Enqueryform data={data} />
 
-              <OfficeTimingSection timing={data.officeTiming} />
-
-              <div className="my-8">
-                <hr />
-              </div>
-
-              <AmenitiesSection amenities={data.amenities} />
-
-              <div className="my-8">
-                <hr />
-              </div>
-
-              <LocationSection address={data.address} mapLink={data.mapLink} />
-              <div className="my-8">
-                <hr />
-              </div>
-              <ConnectivitySection connectivity={data.connectivity} />
-              <div className="my-8">
-                <hr />
-              </div>
-            </div>
-            <div className="col-span-4 ">
-              <div className="sticky top-20">
-                <Enqueryform />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="mx-auto grid max-w-7xl gap-12 mb-8">
-        <RelatedWorkspaces
-          citySlug={params.citySlug}
-          currentSlug={params.workspaceSlug}
-          cityName={data.category?.name}
-        />
-
-        {/* <FaqSection /> */}
+      <div className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-16">
+          <FaqSection />
+        </div>
       </div>
     </>
   );

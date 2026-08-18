@@ -13,6 +13,8 @@ import ExploreByCity from "../components/HomeComponent/ExploreByCity";
 import Testimonials from "../components/HomeComponent/Testimonials";
 import BlogSection from "../components/HomeComponent/BlogSection";
 import HeroSectionNew from "../components/HomeComponent/HeroSectionNew";
+import ExpertConsultationBanner from "../components/HomeComponent/ExpertConsultationBanner";
+import WhyChooseUs from "../components/HomeComponent/WhyChooseUs";
 
 export default function Home() {
   return (
@@ -22,13 +24,14 @@ export default function Home() {
     <VideoSection />
     <HeroSection />
     <FeaturedSpaces />
+    <ExpertConsultationBanner />
     {/* <ExploreSpaces /> */}
     {/* <ServicesCardMain /> */}
-    <ExploreByCity />
+    {/* <ExploreByCity /> */}
     <WhatYouGet />
+    <WhyChooseUs />
     <Testimonials />
-    {/* <HowItWorks /> */}
-    <ComfortableSpaces />
+    {/* <ComfortableSpaces /> */}
     <BlogSection />
     <OurClientlogo />
     {/* <FeatureSection /> */}
