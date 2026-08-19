@@ -38,7 +38,7 @@ export default function BlogDetails() {
             </div>
             <div className="col-span-4">
               <div className="sticky top-20">
-                <Enqueryform />
+                <Enqueryform  data={data} />
               </div>
             </div>
           </div>
