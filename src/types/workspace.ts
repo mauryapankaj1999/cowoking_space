@@ -35,4 +35,6 @@ export interface Workspace {
   community: string[];
    officeTiming: OfficeTiming[];
    connectivity: string[]
+      mainImages: WorkspaceImage[];
+      // mainImages: WorkspaceImage[];
 }

@@ -9,7 +9,6 @@ export const useWorkspacesBySlug = (citySlug: any, subCategorySlug?: any) => {
   });
 };
 
-// GET SINGLE BY SLUG (fixed)
 export const useWorkspaceBySlug = (slug: any) => {
   return useQuery({
     queryKey: ["workspace", "slug", slug],

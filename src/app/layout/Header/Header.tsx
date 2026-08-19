@@ -61,7 +61,17 @@ export default function Header() {
                 isTransparent ? "text-white" : "text-slate-900"
               }`}
             >
-              FyndMySpace
+              {/* FyndMySpace */}
+              {
+                isTransparent ?
+                <img src="/img/logo.png" alt="logo" className="h-9 w-48 object-contain" />
+                :
+                <img src="/img/black_logo.png" alt="logo" className="h-9 w-48 object-contain" />
+
+              }
+
+
+
             </span>
           </Link>
 
