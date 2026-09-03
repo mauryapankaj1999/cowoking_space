@@ -150,7 +150,7 @@ export default function VideoSection() {
               type="button"
               onClick={handleSearch}
               disabled={!selectedCity || searching}
-              className="flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 font-semibold text-white transition-colors hover:bg-[#4a933c] disabled:cursor-not-allowed disabled:opacity-60 md:rounded-xl"
+              className="flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 font-semibold text-white transition-colors hover:bg-primary disabled:cursor-not-allowed disabled:opacity-60 md:rounded-xl"
             >
               {searching ? (
                 <FiLoader className="h-4 w-4 animate-spin" />

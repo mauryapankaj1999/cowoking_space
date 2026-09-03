@@ -124,9 +124,7 @@
 // }
 
 "use client";
-
 import { useEffect, useState } from "react";
-
 import MulitipleSliderSection from "@/app/components/WorkspaceDetailsComponent/MulitipleSliderSection";
 import Enqueryform from "@/app/components/WorkspaceDetailsComponent/Enqueryform";
 import SeatingPlansSection from "@/app/components/WorkspaceDetailsComponent/SeatingPlansSection";
@@ -156,9 +154,7 @@ export default function WorkspaceDetailsPage({
 
         const response = await getWorkspaceBySlug(params.workspaceSlug);
 
-        // ==============================
-        // WORKSPACE DATA CONSOLE
-        // ==============================
+        
 
         console.log("========== WORKSPACE DATA ==========");
 
@@ -218,9 +214,6 @@ export default function WorkspaceDetailsPage({
     fetchWorkspace();
   }, [params.workspaceSlug]);
 
-  // ==============================
-  // LOADING
-  // ==============================
 
   if (loading) {
     return (
@@ -232,9 +225,7 @@ export default function WorkspaceDetailsPage({
     );
   }
 
-  // ==============================
-  // ERROR
-  // ==============================
+
 
   if (error) {
     return (
@@ -246,9 +237,7 @@ export default function WorkspaceDetailsPage({
     );
   }
 
-  // ==============================
-  // NO DATA
-  // ==============================
+
 
   if (!data) {
     return (
@@ -260,9 +249,6 @@ export default function WorkspaceDetailsPage({
     );
   }
 
-  // ==============================
-  // COMBINE 5 MAIN + 7 NORMAL
-  // ==============================
 
   const combinedImages = [
     ...(data?.mainImages || []),
@@ -273,11 +259,7 @@ export default function WorkspaceDetailsPage({
     <>
       <div className="mt-16 bg-white">
 
-        {/* ==============================
-            IMAGE GALLERY
-            Main Images = 5
-            View More = 5 + 7 = 12
-        ============================== */}
+       
 
         <MulitipleSliderSection
           images={combinedImages}
@@ -294,9 +276,7 @@ export default function WorkspaceDetailsPage({
 
             <div className="grid grid-cols-12 gap-8">
 
-              {/* ==============================
-                  LEFT CONTENT
-              ============================== */}
+             
 
               <div className="col-span-12 lg:col-span-8">
 
@@ -311,7 +291,6 @@ export default function WorkspaceDetailsPage({
 
                   <hr className="border-slate-100" />
 
-                  {/* SEATING PLANS */}
 
                   <SeatingPlansSection
                     plans={data.plans}
@@ -319,7 +298,6 @@ export default function WorkspaceDetailsPage({
 
                   <hr className="border-slate-100" />
 
-                  {/* OFFICE TIMING */}
 
                   <OfficeTimingSection
                     timing={data.officeTiming}
@@ -327,7 +305,6 @@ export default function WorkspaceDetailsPage({
 
                   <hr className="border-slate-100" />
 
-                  {/* AMENITIES */}
 
                   <AmenitiesSection
                     amenities={data.amenities}
@@ -335,7 +312,6 @@ export default function WorkspaceDetailsPage({
 
                   <hr className="border-slate-100" />
 
-                  {/* LOCATION */}
 
                   <LocationSection
                     address={data.address}
@@ -344,7 +320,6 @@ export default function WorkspaceDetailsPage({
 
                   <hr className="border-slate-100" />
 
-                  {/* CONNECTIVITY */}
 
                   <ConnectivitySection
                     connectivity={data.connectivity}
@@ -353,9 +328,7 @@ export default function WorkspaceDetailsPage({
                 </div>
               </div>
 
-              {/* ==============================
-                  RIGHT ENQUIRY FORM
-              ============================== */}
+             
 
               <div className="col-span-12 lg:col-span-4">
 

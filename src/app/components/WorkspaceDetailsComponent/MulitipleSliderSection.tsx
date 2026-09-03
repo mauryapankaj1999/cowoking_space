@@ -2,12 +2,13 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { GrGallery } from "react-icons/gr";
-import { IoVideocamOutline, IoClose } from "react-icons/io5";
+import { IoVideocamOutline, IoClose, IoCallOutline, IoCall } from "react-icons/io5";
 import { FiTag } from "react-icons/fi";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import { FaWhatsapp } from "react-icons/fa";
 
 const PRIMARY = "#003F2D";
 
@@ -30,8 +31,8 @@ interface MulitipleSliderSectionProps {
 }
 
 export default function MulitipleSliderSection({
-images = [],      
-   galleryImages = [], 
+  images = [],
+  galleryImages = [],
   videoUrl = "https://www.youtube.com/embed/tgbNymZ7vqY",
   workspaceName = "this workspace",
   consultant = {
@@ -69,7 +70,12 @@ images = [],
                   onClick={() => openGalleryAt(0)}
                   className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[300px] relative cursor-pointer"
                 >
-                  <Image src={img1.url} alt="workspace" fill className="object-cover" />
+                  <Image
+                    src={img1.url}
+                    alt="workspace"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               )}
               {img2 && (
@@ -77,7 +83,12 @@ images = [],
                   onClick={() => openGalleryAt(1)}
                   className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[300px] relative cursor-pointer"
                 >
-                  <Image src={img2.url} alt="workspace" fill className="object-cover" />
+                  <Image
+                    src={img2.url}
+                    alt="workspace"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               )}
             </div>
@@ -86,7 +97,12 @@ images = [],
           <div className="col-span-6">
             <div className="w-full lg:h-[420px] xl:h-[565px] 2xl:h-[37.9rem] relative">
               {img3 && (
-                <Image src={img3.url} alt="workspace" fill className="object-cover" />
+                <Image
+                  src={img3.url}
+                  alt="workspace"
+                  fill
+                  className="object-cover"
+                />
               )}
 
               <div className="absolute bottom-4 right-4">
@@ -118,7 +134,12 @@ images = [],
                   onClick={() => openGalleryAt(3)}
                   className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[300px] relative cursor-pointer"
                 >
-                  <Image src={img4.url} alt="workspace" fill className="object-cover" />
+                  <Image
+                    src={img4.url}
+                    alt="workspace"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               )}
               {img5 && (
@@ -126,7 +147,12 @@ images = [],
                   onClick={() => openGalleryAt(4)}
                   className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[300px] relative cursor-pointer"
                 >
-                  <Image src={img5.url} alt="workspace" fill className="object-cover" />
+                  <Image
+                    src={img5.url}
+                    alt="workspace"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               )}
             </div>
@@ -134,7 +160,6 @@ images = [],
         </div>
       </div>
 
-      {/* Video Modal */}
       {openVideo && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
           <button
@@ -159,7 +184,6 @@ images = [],
         </div>
       )}
 
-      {/* Gallery Modal with Swiper */}
       {openGallery && (
         <div className="fixed inset-0 z-50 flex flex-col bg-black bg-opacity-90">
           <div className="flex items-center justify-between p-4 text-white">
@@ -177,7 +201,7 @@ images = [],
               navigation
               initialSlide={activeIndex}
               onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-              className="w-full max-w-5xl h-full"
+              className="w-full max-w-5xl h-full slidermapper"
             >
               {images.map((img, i) => (
                 <SwiperSlide key={img.public_id || i}>
@@ -220,30 +244,48 @@ images = [],
                       </div>
                       <div className="text-left">
                         <p className="text-[15px] font-bold text-white">
-                          {consultant.name}
+                          {/* {consultant.name} */}
+                          Monty verma
                         </p>
                         <p className="text-[13px] text-white/70">
-                          {maskPhone(consultant.phone)}
+                          {/* {maskPhone(consultant.phone)} */}
+                          9911900230
                         </p>
                       </div>
                     </div>
 
-                    <a
-                      href={`tel:${consultant.phone}`}
-                      className="whitespace-nowrap rounded-lg bg-white px-4 py-2.5 text-[13px] font-semibold transition hover:opacity-90"
-                      style={{ color: PRIMARY }}>
-                  
-                      Contact {consultant.name.split(" ")[0]}
-                    </a>
+                    <div className="flex items-center gap-2">
+                      <a
+                        href={`tel:9911900230`}
+                        className="whitespace-nowrap h-[40px] w-[40px]  flex items-center justify-center rounded-full bg-white font-semibold transition hover:opacity-90"
+                        style={{ color: PRIMARY }}
+                      >
+                      <IoCallOutline className="text-[25px]" />
+                      </a>
+
+
+                      <br />
+
+                      <a
+                        href={`https://api.whatsapp.com/send?phone=9911900230`} target="_blank" rel="noopener noreferrer"
+                        className=" flex h-[40px] w-[40px] items-center justify-center  whitespace-nowrap rounded-full bg-white  font-semibold transition hover:opacity-90"
+                        style={{ color: PRIMARY }}
+                      >
+                        <FaWhatsapp className="text-[25px]" />
+
+                      </a>
+                    </div>
+
+                    
                   </div>
 
                   <div className="mt-6 border-l-2 border-white/40 pl-4 text-left">
                     <p className="text-[15px] italic leading-relaxed text-white/90">
-                      Hi, I'm {consultant.name} — Your workspace consultant
+                      Hi, I’m Monty — your trusted workspace consultant.
                     </p>
                     <p className="mt-1 text-[15px] italic leading-relaxed text-white/90">
-                      I can help you schedule a workspace tour, negotiate the
-                      best deal, and answer any workspace-related questions.
+                      I help you find the right workspace, schedule tours, and
+                      get the best deal.
                     </p>
                   </div>
 

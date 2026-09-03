@@ -7,7 +7,7 @@ export default function AboutWorkspaceSection({
 }) {
   return (
     <div>
-      <h2 className="mb-3 text-lg font-semibold text-gray-900">{name}</h2>
+      <h2 className="mb-3 text-[22px] font-bold text-gray-900">{name}</h2>
       <p className="text-sm leading-relaxed text-gray-600">{description}</p>
     </div>
   );

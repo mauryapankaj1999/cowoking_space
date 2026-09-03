@@ -1,7 +1,9 @@
 "use client";
+import { HiOutlineArrowRight } from "react-icons/hi";
 import CardComponent from "../CardComponent/CardComponent";
 import MainHeading from "../CommenHeading/MainHeading";
 import { useWorkspaces } from "@/hooks/useWorkspace";
+import Link from "next/link";
 
 export default function FeaturedSpaces() {
   const { data, isLoading, isError } = useWorkspaces();
@@ -13,8 +15,18 @@ export default function FeaturedSpaces() {
   return (
     <section className="bg-[#F9FBFC] px-6 py-16 sm:py-12">
       <div className="mx-auto max-w-7xl">
-        <MainHeading title="Featured Spaces in NCR" />
-
+        <div className="flex items-center justify-between">
+          <MainHeading title="Featured Spaces in NCR" />
+          <div className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 transition hover:text-primary">
+            <Link
+              href="/spaces"
+              className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 transition hover:text-primary"
+            >
+              View all spaces
+              <HiOutlineArrowRight className="text-[20px]" />
+            </Link>
+          </div>
+        </div>
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {data?.data?.slice(0, 9).map((space: any) => (
             <CardComponent

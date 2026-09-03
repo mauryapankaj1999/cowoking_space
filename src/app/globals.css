@@ -183,16 +183,19 @@ height: 14px;
   border-color: color-mix(in oklab, var(#142840) 22%, transparent);
   /* box-shadow: 0 28px 40px -20px color-mix(in oklab, var(--ink) 35%, transparent); */
 }
-.swiper-navigation-icon{
+.slidermapper .swiper-navigation-icon{
   color: var(--primarycolor);
 }
-/* .swiper-button-next, .swiper-button-prev {
+.slidermapper .swiper-button-next, .swiper-button-prev {
         background-color: #2c6051;
         font-size: 12px;
         padding: 14px;
         border-radius: 32px;
       }
-      .swiper-button-next svg, .swiper-button-prev svg{
+
+    .slidermapper  .swiper-button-next svg, .swiper-button-prev svg{
   color: #ffffff !important;
   
-} */
+}
+ 
+ 
