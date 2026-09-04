@@ -265,10 +265,10 @@ export default function WorkspaceDetailsPage({
           images={combinedImages}
           galleryImages={data?.mainImages || []}
           workspaceName={data?.name}
-          consultant={{
-            name: "Pankaj Maurya",
-            phone: "+91 8130000071",
-          }}
+          // consultant={{
+          //   name: "Pankaj Maurya",
+          //   phone: "+91 8130000071",
+          // }}
         />
 
         <div className="bg-[#F9FBFC]">

@@ -95,7 +95,7 @@ export default function MulitipleSliderSection({
           </div>
 
           <div className="col-span-6">
-            <div className="w-full lg:h-[420px] xl:h-[565px] 2xl:h-80vh] relative">
+            <div className="w-full lg:h-[420px] xl:h-[565px] 2xl:h-[80vh] relative">
               {img3 && (
                 <Image
                   src={img3.url}
@@ -216,7 +216,6 @@ export default function MulitipleSliderSection({
                 </SwiperSlide>
               ))}
 
-              {/* Last slide — contact card */}
               <SwiperSlide>
                 <div
                   className="mx-auto flex h-full max-h-[80vh] w-full max-w-[48rem] flex-col items-center justify-center rounded-2xl px-8 py-10 text-center"

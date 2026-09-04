@@ -199,7 +199,7 @@ export default function NavDropdown({
                   {item.name}
                 </p>
                 {item.description && (
-                  <p className="text-[11px] text-slate-500">
+                  <p className="text-[11px] text-slate-500 line-clamp-1">
                     {item.description}
                   </p>
                 )}
