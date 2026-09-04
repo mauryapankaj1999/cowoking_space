@@ -259,7 +259,8 @@ export default function WorkspaceDetailsPage({
     <>
       <div className="mt-16 bg-white">
 
-       
+        <div className="bg-[#F9FBFC]">
+          <div className="mx-auto grid max-w-7xl gap-12 px-6 pt-2 pb-16">
 
         <MulitipleSliderSection
           images={combinedImages}
@@ -271,8 +272,7 @@ export default function WorkspaceDetailsPage({
           // }}
         />
 
-        <div className="bg-[#F9FBFC]">
-          <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16">
+       
 
             <div className="grid grid-cols-12 gap-8">
 

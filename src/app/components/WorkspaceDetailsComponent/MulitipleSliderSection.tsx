@@ -62,32 +62,32 @@ export default function MulitipleSliderSection({
   return (
     <>
       <div className="lg:block hidden">
-        <div className="grid grid-cols-10 gap-1">
+        <div className="grid grid-cols-10 gap-4">
           <div className="col-span-2">
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-4">
               {img1 && (
                 <div
                   onClick={() => openGalleryAt(0)}
-                  className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[40vh] relative cursor-pointer"
+                  className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[30vh] relative cursor-pointer"
                 >
                   <Image
                     src={img1.url}
                     alt="workspace"
                     fill
-                    className="object-cover"
+                    className="object-cover rounded-2xl"
                   />
                 </div>
               )}
               {img2 && (
                 <div
                   onClick={() => openGalleryAt(1)}
-                  className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[40vh] relative cursor-pointer"
+                  className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[30vh] relative cursor-pointer"
                 >
                   <Image
                     src={img2.url}
                     alt="workspace"
                     fill
-                    className="object-cover"
+                    className="object-cover rounded-2xl"
                   />
                 </div>
               )}
@@ -96,13 +96,13 @@ export default function MulitipleSliderSection({
           {/* adfads */}
 
           <div className="col-span-6">
-            <div className="w-full lg:h-[420px] xl:h-[565px] 2xl:h-[80vh] relative">
+            <div className="w-full lg:h-[420px] xl:h-[565px] 2xl:h-[60vh] relative">
               {img3 && (
                 <Image
                   src={img3.url}
                   alt="workspace"
                   fill
-                  className="object-cover"
+                  className="object-cover rounded-2xl"
                 />
               )}
 
@@ -129,30 +129,30 @@ export default function MulitipleSliderSection({
           </div>
 
           <div className="col-span-2">
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-4">
               {img4 && (
                 <div
                   onClick={() => openGalleryAt(3)}
-                  className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[40vh] relative cursor-pointer"
+                  className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[30vh] relative cursor-pointer"
                 >
                   <Image
                     src={img4.url}
                     alt="workspace"
                     fill
-                    className="object-cover"
+                    className="object-cover rounded-2xl"
                   />
                 </div>
               )}
               {img5 && (
                 <div
                   onClick={() => openGalleryAt(4)}
-                  className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[40vh] relative cursor-pointer"
+                  className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[30vh] relative cursor-pointer"
                 >
                   <Image
                     src={img5.url}
                     alt="workspace"
                     fill
-                    className="object-cover"
+                    className="object-cover rounded-2xl"
                   />
                 </div>
               )}
