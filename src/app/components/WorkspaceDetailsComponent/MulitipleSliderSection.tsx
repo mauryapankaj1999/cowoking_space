@@ -93,6 +93,7 @@ export default function MulitipleSliderSection({
               )}
             </div>
           </div>
+          {/* adfads */}
 
           <div className="col-span-6">
             <div className="w-full lg:h-[420px] xl:h-[565px] 2xl:h-[80vh] relative">
