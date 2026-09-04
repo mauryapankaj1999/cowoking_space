@@ -68,7 +68,7 @@ export default function MulitipleSliderSection({
               {img1 && (
                 <div
                   onClick={() => openGalleryAt(0)}
-                  className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[300px] relative cursor-pointer"
+                  className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[40vh] relative cursor-pointer"
                 >
                   <Image
                     src={img1.url}
@@ -81,7 +81,7 @@ export default function MulitipleSliderSection({
               {img2 && (
                 <div
                   onClick={() => openGalleryAt(1)}
-                  className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[300px] relative cursor-pointer"
+                  className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[40vh] relative cursor-pointer"
                 >
                   <Image
                     src={img2.url}
@@ -95,7 +95,7 @@ export default function MulitipleSliderSection({
           </div>
 
           <div className="col-span-6">
-            <div className="w-full lg:h-[420px] xl:h-[565px] 2xl:h-[37.9rem] relative">
+            <div className="w-full lg:h-[420px] xl:h-[565px] 2xl:h-80vh] relative">
               {img3 && (
                 <Image
                   src={img3.url}
@@ -132,7 +132,7 @@ export default function MulitipleSliderSection({
               {img4 && (
                 <div
                   onClick={() => openGalleryAt(3)}
-                  className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[300px] relative cursor-pointer"
+                  className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[40vh] relative cursor-pointer"
                 >
                   <Image
                     src={img4.url}
@@ -145,7 +145,7 @@ export default function MulitipleSliderSection({
               {img5 && (
                 <div
                   onClick={() => openGalleryAt(4)}
-                  className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[300px] relative cursor-pointer"
+                  className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[40vh] relative cursor-pointer"
                 >
                   <Image
                     src={img5.url}

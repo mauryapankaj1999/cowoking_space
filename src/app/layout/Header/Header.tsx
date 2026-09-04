@@ -64,9 +64,9 @@ export default function Header() {
               {/* FyndMySpace */}
               {
                 isTransparent ?
-                <img src="/img/logo.png" alt="logo" className="h-9 w-48 object-contain" />
+                <img src="/img/logo11.png" alt="logo" className="h-9 w-48 object-contain" />
                 :
-                <img src="/img/black_logo.png" alt="logo" className="h-9 w-48 object-contain" />
+                <img src="/img/black_logo11.png" alt="logo" className="h-9 w-48 object-contain" />
 
               }
 
@@ -128,13 +128,13 @@ export default function Header() {
           {/* Right side */}
           <div className="hidden lg:flex items-center gap-6">
             <a
-              href="tel:+919355689999"
+              href="tel:+9911900230"
               className={`flex items-center gap-2 text-[15px] font-medium transition-colors duration-300 hover:text-[#1764D8] ${
                 isTransparent ? "text-white" : "text-slate-700"
               }`}
             >
               <FiPhone className="h-4 w-4" />
-              +91 93556 89999
+              +91 991190 0230
             </a>
 
             <button
@@ -215,11 +215,11 @@ export default function Header() {
             ))} */}
 
             <a
-              href="tel:+919355689999"
+              href="tel:+919911900230"
               className="mt-4 flex items-center gap-2 text-[15px] font-medium text-slate-700"
             >
               <FiPhone className="h-4 w-4" />
-              +91 93556 89999
+              +91 991190 0230
             </a>
 
             <button className="mt-4 rounded-md bg-primary px-6 py-3 font-medium text-white">

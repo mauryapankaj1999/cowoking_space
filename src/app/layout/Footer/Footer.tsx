@@ -48,7 +48,7 @@ export default function Footer() {
             {/* Logo + tagline */}
             <div className="max-w-xs">
               <Link href="/" className="flex items-center gap-2.5">
-                              <img src="/img/logo.png" alt="logo" className="h-9 w-48 object-contain" />
+                              <img src="/img/logo11.png" alt="logo" className="h-9 w-48 object-contain" />
 
               </Link>
               <p className="mt-4 text-sm leading-relaxed text-white/90">
@@ -93,11 +93,11 @@ export default function Footer() {
                 hello@worknest.in
               </a>
               <a
-                href="tel:+919355689999"
+                href="tel:+919911900230"
                 className="flex items-center gap-2 text-sm text-white/90 transition"
               >
                 <FiPhone className="h-4 w-4" />
-                +91 93556 89999
+                +91 991190 0230
               </a>
             </div>
           </div>
