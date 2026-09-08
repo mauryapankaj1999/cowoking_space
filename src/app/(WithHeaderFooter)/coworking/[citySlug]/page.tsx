@@ -8,6 +8,7 @@ import { useCategoryBySlug } from "@/hooks/useCategory";
 import { useSubCategoriesByCitySlug } from "@/hooks/useSubCategory";
 import { useWorkspacesBySlug } from "@/hooks/useWorkspace";
 import CorworkingSpaceCaption from "@/app/components/CorworkingSpaceCaption/CorworkingSpaceCaption";
+import CardLoading from "@/app/components/CardLoading";
 
 export default function Page() {
   const { citySlug } = useParams();
@@ -35,41 +36,69 @@ export default function Page() {
     <>
       <div className="mt-[3.8rem]">
         <CorworkingSpaceCaption cityName={cityName} />
-        <section className="bg-[#f5fdff] px-10 py-10 ">
+        <section className="bg-[#f5fdff] lg:px-10 px-4 py-10 ">
           <div className="mx-auto max-w-7xl">
             {/* <MainHeading title={`Coworking Space In ${cityName}`} /> */}
             <div className="my-4">
-              <ul className="flex flex-wrap gap-4">
-                <li
-                  onClick={() => setActiveTab(null)}
-                  className={`cursor-pointer border-[0.3px] px-3 py-[6px] rounded-[5px] border-[#CAD1D3] text-[13px] font-medium transition-all duration-300 ${
-                    activeTab === null
-                      ? "bg-primary text-white"
-                      : "border text-slate-500 hover:text-primary"
-                  }`}
-                >
-                  All
-                </li>
-                {tabslist.map((item: any) => (
+              <div className="mobile-tabs-scroll">
+                <ul className="flex w-max min-w-full flex-nowrap gap-4">
                   <li
-                    key={item._id}
-                    onClick={() => setActiveTab(item.slug)}
-                    className={`cursor-pointer border-[0.3px] px-3 py-[6px] rounded-[5px] border-primary text-[13px] font-medium transition-all duration-300 ${
-                      activeTab === item.slug
+                    onClick={() => setActiveTab(null)}
+                    className={`
+                    shrink-0 cursor-pointer
+                    rounded-[5px]
+                    border-[0.3px]
+                    border-primary
+                    px-3 py-[6px]
+                    text-[13px]
+                    font-medium
+                    transition-all duration-300
+                    ${
+                      activeTab === null
                         ? "bg-primary text-white"
-                        : "border text-primary hover:text-primary"
-                    }`}
+                        : "text-primary hover:text-primary"
+                    }
+                  `}
                   >
-                    {item.name}
+                    All
                   </li>
-                ))}
-              </ul>
+
+                  {tabslist.map((item: any) => (
+                    <li
+                      key={item._id}
+                      onClick={() => setActiveTab(item.slug)}
+                      className={`
+                      shrink-0 cursor-pointer
+                      rounded-[5px]
+                      border-[0.3px]
+                      border-primary
+                      px-3 py-[6px]
+                      text-[13px]
+                      font-medium
+                      transition-all duration-300
+                      ${
+                        activeTab === item.slug
+                          ? "bg-primary text-white"
+                          : "text-primary hover:text-primary"
+                      }
+                    `}
+                    >
+                      {item.name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             <div className="mt-10"></div>
 
             {isLoading ? (
-              <p className="text-slate-500">Loading...</p>
+
+              <>
+              
+                <CardLoading />
+              </>
+              // <p className="text-slate-500">Loading...</p>
             ) : workspaces.length === 0 ? (
               <p className="text-slate-500">No workspaces found.</p>
             ) : (

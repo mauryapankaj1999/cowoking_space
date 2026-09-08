@@ -90,7 +90,7 @@ export default function BlogSection() {
   const blogs = data?.data || [];
 
   return (
-    <section className="relative overflow-hidden bg-[#F9FBFC] px-6 py-16 sm:py-20">
+    <section className="relative overflow-hidden bg-[#F9FBFC] lg:px-6 px-4 py-16 sm:py-20">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
           <div>

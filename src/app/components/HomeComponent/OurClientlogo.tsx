@@ -22,7 +22,7 @@ export default function OurClientlogo() {
 
   return (
     <>
-      <section className="bg-white px-6 py-16 sm:py-20">
+      <section className="bg-white lg:px-6 px-4 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="mb-8">
             <MainHeading title="Our Clients" />

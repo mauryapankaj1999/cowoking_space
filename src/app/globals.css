@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @font-face {
   font-family: "Financier Display";
   src: url("/fonts/FinancierDisplay-Regular.woff2") format("woff2");
@@ -58,10 +57,9 @@
   font-display: swap;
 }
 
-:root{
-  --primarycolor:   #003F2D;
+:root {
+  --primarycolor: #003f2d;
   /* --swiper-theme-color: #0058be; */
-
 }
 
 .group .swiper-button-next,
@@ -108,12 +106,13 @@
   justify-content: center;
   cursor: pointer;
 }
-.group .swiper-button-prev svg{
+.group .swiper-button-prev svg {
   transform: rotate(180deg);
 }
-.group .swiper-button-prev svg, .group .swiper-button-next svg{
-width: 14px;
-height: 14px;
+.group .swiper-button-prev svg,
+.group .swiper-button-next svg {
+  width: 14px;
+  height: 14px;
 }
 
 /* Right Arrow */
@@ -128,36 +127,40 @@ height: 14px;
   cursor: pointer;
 }
 
-.service-image{
+.service-image {
   position: relative;
 }
-.service-image::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(180deg, transparent 50%, var(--primarycolor) 85.48%);
-    z-index: 1;
+.service-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 50%,
+    var(--primarycolor) 85.48%
+  );
+  z-index: 1;
 }
-.service-image::after{
- content: "";
-    position: absolute;
-    width: 200%;
-    height: 0%;
-    left: 50%;
-    top: 50%;
-    background-color: rgba(255, 255, 255, .3);
-    transform: translate(-50%, -50%) rotate(-45deg);
-    z-index: 1;
+.service-image::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 0%;
+  left: 50%;
+  top: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%) rotate(-45deg);
+  z-index: 1;
 }
 .service-image:hover:after {
-    height: 250%;
-    transition: all 600ms linear;
-    background-color: transparent;
+  height: 250%;
+  transition: all 600ms linear;
+  background-color: transparent;
 }
 .vertical-text {
   writing-mode: vertical-lr;
@@ -174,7 +177,10 @@ height: 14px;
 } */
 
 .card-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .card-lift:hover {
@@ -183,19 +189,64 @@ height: 14px;
   border-color: color-mix(in oklab, var(#142840) 22%, transparent);
   /* box-shadow: 0 28px 40px -20px color-mix(in oklab, var(--ink) 35%, transparent); */
 }
-.slidermapper .swiper-navigation-icon{
+.slidermapper .swiper-navigation-icon {
   color: var(--primarycolor);
 }
-.slidermapper .swiper-button-next, .swiper-button-prev {
-        background-color: #2c6051;
-        font-size: 12px;
-        padding: 14px;
-        border-radius: 32px;
-      }
-
-    .slidermapper  .swiper-button-next svg, .swiper-button-prev svg{
-  color: #ffffff !important;
-  
+.slidermapper .swiper-button-next,
+.slidermapper .swiper-button-prev {
+  background-color: #2c6051;
+  font-size: 12px;
+  padding: 14px;
+  border-radius: 32px;
 }
- 
- 
+
+.slidermapper .swiper-button-next svg,
+.slidermapper .swiper-button-prev svg {
+  color: #ffffff !important;
+}
+
+.mobile-slider .swiper-pagination {
+  bottom: 15px !important;
+}
+
+.mobile-slider .swiper-pagination-bullet {
+  width: 18px;
+  height: 4px;
+  border-radius: 10px;
+  opacity: 1;
+  background: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.mobile-slider .swiper-pagination-bullet-active {
+  width: 25px;
+  height: 4px;
+  background: #003f2d;
+}
+
+
+.mobile-tabs-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #003F2D transparent;
+}
+
+.mobile-tabs-scroll::-webkit-scrollbar {
+  height: 5px;
+}
+
+.mobile-tabs-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mobile-tabs-scroll::-webkit-scrollbar-thumb {
+  background: #003F2D;
+  border-radius: 10px;
+}
+
+.mobile-tabs-scroll::-webkit-scrollbar-thumb:hover {
+  background: #003F2D;
+}

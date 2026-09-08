@@ -68,6 +68,7 @@ import EnquiryModal from "@/app/components/CommonModal/EnquiryModal";
 import CorworkingSpaceCaption from "@/app/components/CorworkingSpaceCaption/CorworkingSpaceCaption";
 import { useWorkspacesByOperator } from "@/hooks/useWorkspace";
 import { useOperatorByParam } from "@/hooks/useOperator";
+import CardLoading from "@/app/components/CardLoading";
 
 export default function OperatorWorkspacesPage() {
   const { operatorId } = useParams();
@@ -85,7 +86,15 @@ export default function OperatorWorkspacesPage() {
     setOpen(true);
   };
 
-  if (isLoading) return <div className="pt-32 text-center">Loading...</div>;
+  if (isLoading) return (
+    <>
+<div className="mt-[3.8rem]">
+          <div className="px-6 max-w-7xl mx-auto py-10">
+            <CardLoading />
+          </div>
+        </div>
+    </>
+  )
 
   return (
     <>

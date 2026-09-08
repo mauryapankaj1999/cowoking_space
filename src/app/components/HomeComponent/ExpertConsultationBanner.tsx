@@ -60,6 +60,7 @@
 import { useState } from "react";
 import { FiUserCheck, FiPhoneCall, FiCheckCircle } from "react-icons/fi";
 import EnquiryModal from "../CommonModal/EnquiryModal";
+import MainHeading from "../CommenHeading/MainHeading";
 
 const PRIMARY = "#003F2D";
 
@@ -82,16 +83,19 @@ export default function ExpertConsultationBanner() {
           }}
         />
 
-        <div className="relative mx-auto flex max-w-7xl flex-col items-start justify-between gap-10 px-6 py-16 sm:py-20 lg:flex-row lg:items-center">
+        <div className="relative mx-auto flex max-w-7xl flex-col items-start justify-between gap-10 lg:px-6 px-4 py-16 sm:py-20 lg:flex-row lg:items-center">
           <div className="max-w-xl">
             {/* <span className="inline-flex items-center gap-1.5 rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
               <FiUserCheck className="h-3.5 w-3.5" />
               Enterprise consultation
             </span> */}
 
-            <h2 className="mt-5 text-2xl font-financierDisplay  font-bold leading-snug text-white sm:text-3xl lg:text-4xl">
+            {/* <h2 className="mt-5 text-2xl font-financierDisplay  font-bold leading-snug text-white sm:text-3xl lg:text-4xl">
               Need expert consultation to upgrade your office space?
-            </h2>
+            </h2> */}
+
+                <MainHeading title="Need expert consultation to upgrade your office space?" white />
+
 
             <p className="mt-4 text-[15px] leading-relaxed text-white/80 sm:text-base">
               Talk to our dedicated enterprise manager for comprehensive and

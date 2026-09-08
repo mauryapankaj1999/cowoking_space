@@ -6,6 +6,7 @@ import EnquiryModal from "@/app/components/CommonModal/EnquiryModal";
 import { useWorkspacesByCategory } from "@/hooks/useWorkspace";
 import { useWorkspaceCategory } from "@/hooks/useWorkspaceCategory";
 import CorworkingSpaceCaption from "@/app/components/CorworkingSpaceCaption/CorworkingSpaceCaption";
+import CardLoading from "@/app/components/CardLoading";
 
 export default function CategoryWorkspacesPage() {
   const { id } = useParams();
@@ -13,7 +14,7 @@ export default function CategoryWorkspacesPage() {
   const [selectedSpace, setSelectedSpace] = useState<any>(null);
 
   const { data: workspaceData, isLoading } = useWorkspacesByCategory(id);
-  const { data: categoryData } = useWorkspaceCategory(id as any );
+  const { data: categoryData } = useWorkspaceCategory(id as any);
 
   const workspaces = workspaceData?.data || [];
   const categoryName = categoryData?.data?.name || "";
@@ -23,7 +24,16 @@ export default function CategoryWorkspacesPage() {
     setOpen(true);
   };
 
-  if (isLoading) return <div className="pt-32 text-center">Loading...</div>;
+  if (isLoading)
+    return (
+      <>
+        <div className="mt-[3.8rem]">
+          <div className="px-6 max-w-7xl mx-auto py-10">
+            <CardLoading />
+          </div>
+        </div>
+      </>
+    );
 
   return (
     <>

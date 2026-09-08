@@ -5,11 +5,12 @@ import { GrGallery } from "react-icons/gr";
 import { IoVideocamOutline, IoClose, IoCallOutline, IoCall } from "react-icons/io5";
 import { FiTag } from "react-icons/fi";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation ,Autoplay} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { FaWhatsapp } from "react-icons/fa";
-
+import mobilesliderimg from "/img/service-img-1.jpg";
+import MobileSlider from "./MobileSlider";
 const PRIMARY = "#003F2D";
 
 interface WorkspaceImage {
@@ -61,13 +62,14 @@ export default function MulitipleSliderSection({
 
   return (
     <>
+    <div className="mx-auto grid lg:max-w-7xl gap-12 px-6 pt-2">
       <div className="lg:block hidden">
         <div className="grid grid-cols-10 gap-4">
           <div className="col-span-2">
             <div className="flex flex-col gap-4">
               {img1 && (
                 <div
-                  onClick={() => openGalleryAt(0)}
+                onClick={() => openGalleryAt(0)}
                   className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[30vh] relative cursor-pointer"
                 >
                   <Image
@@ -75,20 +77,20 @@ export default function MulitipleSliderSection({
                     alt="workspace"
                     fill
                     className="object-cover rounded-2xl"
-                  />
+                    />
                 </div>
               )}
               {img2 && (
                 <div
-                  onClick={() => openGalleryAt(1)}
-                  className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[30vh] relative cursor-pointer"
+                onClick={() => openGalleryAt(1)}
+                className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[30vh] relative cursor-pointer"
                 >
                   <Image
                     src={img2.url}
                     alt="workspace"
                     fill
                     className="object-cover rounded-2xl"
-                  />
+                    />
                 </div>
               )}
             </div>
@@ -96,14 +98,14 @@ export default function MulitipleSliderSection({
           {/* adfads */}
 
           <div className="col-span-6">
-            <div className="w-full lg:h-[420px] xl:h-[565px] 2xl:h-[60vh] relative">
+            <div className="w-full lg:h-[420px] xl:h-[565px] 2xl:h-[62vh] relative">
               {img3 && (
                 <Image
-                  src={img3.url}
-                  alt="workspace"
+                src={img3.url}
+                alt="workspace"
                   fill
                   className="object-cover rounded-2xl"
-                />
+                  />
               )}
 
               <div className="absolute bottom-4 right-4">
@@ -132,8 +134,8 @@ export default function MulitipleSliderSection({
             <div className="flex flex-col gap-4">
               {img4 && (
                 <div
-                  onClick={() => openGalleryAt(3)}
-                  className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[30vh] relative cursor-pointer"
+                onClick={() => openGalleryAt(3)}
+                className="w-full lg:h-[208px] xl:h-[280px] 2xl:h-[30vh] relative cursor-pointer"
                 >
                   <Image
                     src={img4.url}
@@ -160,6 +162,19 @@ export default function MulitipleSliderSection({
           </div>
         </div>
       </div>
+    </div>
+
+          
+  <div className="block lg:hidden w-full min-w-0 overflow-hidden">
+
+
+    <MobileSlider  images={galleryImages} />
+  </div>
+
+
+
+
+
 
       {openVideo && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
@@ -308,6 +323,12 @@ export default function MulitipleSliderSection({
           </div>
         </div>
       )}
+
+
+
+
+
+
     </>
   );
 }

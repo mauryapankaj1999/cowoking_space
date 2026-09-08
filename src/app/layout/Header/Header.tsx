@@ -28,7 +28,8 @@ export default function Header() {
   }, []);
 
   const { data: citiesData, isLoading: citiesLoading } = useCategories();
-  const { data: categoriesData, isLoading: categoriesLoading } = useWorkspaceCategories();
+  const { data: categoriesData, isLoading: categoriesLoading } =
+    useWorkspaceCategories();
   const { data: operatorsData, isLoading: operatorsLoading } = useOperators();
 
   const cities = citiesData?.data || [];
@@ -48,39 +49,40 @@ export default function Header() {
         isTransparent
           ? "bg-transparent border-b border-transparent"
           : scrolled
-          ? "border-slate-200 bg-white/70 shadow-sm backdrop-blur-md"
-          : "border-b border-slate-200 bg-[#F8F9FF] shadow-none"
+            ? "border-slate-200 bg-white/70 shadow-sm backdrop-blur-md"
+            : "border-b border-slate-200 bg-[#F8F9FF] shadow-none"
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="flex items-center justify-between py-3">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5">
-            <span
-              className={`text-xl font-medium transition-colors duration-300 ${
-                isTransparent ? "text-white" : "text-slate-900"
-              }`}
-            >
-              {/* FyndMySpace */}
-              {
-                isTransparent ?
-                <img src="/img/logo11.png" alt="logo" className="h-9 w-48 object-contain" />
-                :
-                <img src="/img/black_logo11.png" alt="logo" className="h-9 w-48 object-contain" />
+          <span
+            className={`text-xl font-medium transition-colors duration-300 ${
+              isTransparent ? "text-white" : "text-slate-900"
+            }`}
+          >
+            {isTransparent ? (
+              <img
+                src="/img/logo11.png"
+                alt="logo"
+                className="h-8 w-36 object-contain sm:h-9 sm:w-48"
+              />
+            ) : (
+              <img
+                src="/img/black_logo11.png"
+                alt="logo"
+                className="h-8 w-36 object-contain sm:h-9 sm:w-48"
+              />
+            )}
+          </span>
+        </Link>
 
-              }
-
-
-
-            </span>
-          </Link>
-
-          {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-9">
             <NavDropdown
               label="Cities"
               items={cities}
-                basePath="/coworking"
+              basePath="/coworking"
               isTransparent={isTransparent}
               loading={citiesLoading}
             />
@@ -96,21 +98,12 @@ export default function Header() {
             <NavDropdown
               label="Operators"
               items={operators}
-               basePath="/operator"
+              basePath="/operator"
               isTransparent={isTransparent}
               loading={operatorsLoading}
             />
 
-            {/* <NavDropdown
-              label="Coliving"
-              items={[
-                { title: "Manage Office", link: "/coliving" },
-                { title: "Virtual Office", link: "/virtual-office" },
-              ]}
-              basePath="/coliving"
-              isTransparent={isTransparent}
-            /> */}
-            
+          
 
             {menus.map((item, index) => (
               <Link
@@ -148,16 +141,19 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Mobile toggle */}
           <button
             className="lg:hidden"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
             {menuOpen ? (
-              <FiX className={`h-7 w-7 ${isTransparent ? "text-white" : "text-slate-900"}`} />
+              <FiX
+                className={`h-7 w-7 ${isTransparent ? "text-white" : "text-slate-900"}`}
+              />
             ) : (
-              <FiMenu className={`h-7 w-7 ${isTransparent ? "text-white" : "text-slate-900"}`} />
+              <FiMenu
+                className={`h-7 w-7 ${isTransparent ? "text-white" : "text-slate-900"}`}
+              />
             )}
           </button>
         </div>
@@ -167,7 +163,9 @@ export default function Header() {
       {menuOpen && (
         <div className="border-t bg-white lg:hidden">
           <div className="flex flex-col px-5 py-5">
-            <p className="pt-2 pb-1 text-xs font-semibold uppercase text-slate-400">Cities</p>
+            <p className="pt-2 pb-1 text-xs font-semibold uppercase text-slate-400">
+              Cities
+            </p>
             {cities.map((c: any) => (
               <Link
                 key={c.slug}
@@ -179,7 +177,9 @@ export default function Header() {
               </Link>
             ))}
 
-            <p className="pt-4 pb-1 text-xs font-semibold uppercase text-slate-400">Categories</p>
+            <p className="pt-4 pb-1 text-xs font-semibold uppercase text-slate-400">
+              Categories
+            </p>
             {categories.map((c: any) => (
               <Link
                 key={c.slug}
@@ -191,7 +191,9 @@ export default function Header() {
               </Link>
             ))}
 
-            <p className="pt-4 pb-1 text-xs font-semibold uppercase text-slate-400">Operators</p>
+            <p className="pt-4 pb-1 text-xs font-semibold uppercase text-slate-400">
+              Operators
+            </p>
             {operators.map((o: any) => (
               <Link
                 key={o.slug}

@@ -28,7 +28,7 @@ const FEATURES = [
 
 export default function WhatYouGet() {
   return (
-    <section className="relative overflow-hidden bg-white px-6 py-16 sm:py-20">
+    <section className="relative overflow-hidden bg-white lg:px-6 px-4 py-16 sm:py-20">
       
       <div
         className="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full opacity-[0.06]"

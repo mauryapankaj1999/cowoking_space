@@ -4,16 +4,21 @@ import CardComponent from "../CardComponent/CardComponent";
 import MainHeading from "../CommenHeading/MainHeading";
 import { useWorkspaces } from "@/hooks/useWorkspace";
 import Link from "next/link";
+import CardLoading from "../CardLoading";
 
 export default function FeaturedSpaces() {
   const { data, isLoading, isError } = useWorkspaces();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <>
+      <CardLoading />
+      </>
+    )
   }
 
   return (
-    <section className="bg-[#F9FBFC] px-6 py-16 sm:py-12">
+    <section className="bg-[#F9FBFC] lg:px-6 px-4 py-16 sm:py-12">
       <div className="mx-auto max-w-7xl">
         <div className="flex items-center justify-between">
           <MainHeading title="Featured Spaces in NCR" />

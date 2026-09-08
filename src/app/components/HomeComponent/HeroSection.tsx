@@ -13,6 +13,7 @@ import {
 } from "react-icons/fi";
 import ComfortableSpaces from "./ComfortableSpaces";
 import { useCategories } from "@/hooks/useCategory";
+import MainHeading from "../CommenHeading/MainHeading";
 
 const CITY_OPTIONS = ["Delhi", "Noida", "Gurgaon"];
 const PRIMARY = "#003F2D";
@@ -89,7 +90,6 @@ export default function HeroSection() {
 
     setSubmitting(true);
     try {
-      // TODO: replace with actual lead-submission API call
       console.log(form);
       await new Promise((resolve) => setTimeout(resolve, 600));
 
@@ -104,7 +104,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-amber-50 via-orange-50/40 to-blue-50 px-6 py-14 sm:py-20 lg:py-12">
+    <section className="relative overflow-hidden bg-gradient-to-br from-amber-50 via-orange-50/40 to-blue-50 lg:px-6 px-4 py-14 sm:py-20 lg:py-12">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
         {/* LEFT — Form */}
         <div>
@@ -112,13 +112,9 @@ export default function HeroSection() {
             onSubmit={handleSubmit}
             className="rounded-3xl border border-white/60 bg-white p-6 shadow-xl shadow-slate-200/60 sm:p-8"
           >
-            <p
-              className="mb-1 text-[18px] font-semibold font-financierDisplay tracking-wide"
-              style={{ color: PRIMARY }}
-            >
-              Book a free tour
-            </p>
-            <p className="mb-6 text-[13px] text-slate-500">
+          <MainHeading title="Book a free tour" />
+    
+            <p className="mb-6 text-[13px] text-slate-500 mt-2">
               Share your details and our team will reach out within one
               business day.
             </p>
@@ -227,7 +223,6 @@ export default function HeroSection() {
           </form>
         </div>
 
-        {/* RIGHT — Slides, click pe city popup */}
         <div
           role="button"
           tabIndex={0}
@@ -240,7 +235,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* City popup */}
       {modalOpen && (
         <div
           className={`fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm transition-opacity duration-200 ${

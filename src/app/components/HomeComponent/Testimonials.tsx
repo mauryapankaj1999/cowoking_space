@@ -94,7 +94,7 @@ export default function Testimonials() {
   const testimonials = data?.data || [];
 
   return (
-    <section className="relative overflow-hidden bg-white px-6 py-16 sm:py-20">
+    <section className="relative overflow-hidden bg-white lg:px-6 px-4 py-16 sm:py-20">
       {/* decorative background blob */}
       <div
         className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full opacity-[0.05]"

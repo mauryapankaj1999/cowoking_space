@@ -58,9 +58,9 @@ export default function VideoSection() {
         
         </h1>
 
-        <p className="mt-6 max-w-3xl
+        <p className="sm:mt-6 mt-4 max-w-3xl
          text-white  font-light
-         text-base md:text-lg">
+         text-[13px] md:text-lg">
          Find Premium Coworking and Office Spaces Perfectly Suited for Your Growing Team
         </p>
 
@@ -71,8 +71,8 @@ export default function VideoSection() {
            md:flex-row md:items-center md:rounded-full"
            > */}
           <div className="
-            relative z-30 flex flex-col gap-2 border
-           border-white/30 bg-white/20 p-6 shadow-2xl backdrop-blur-xl 
+            relative z-30 flex flex-col gap-2 sm:border
+           sm:border-white/30 sm:bg-white/20 sm:p-6 shadow-2xl sm:backdrop-blur-xl 
            md:flex-row md:items-center md:rounded-xl"
            >
             <div className="relative flex-1">

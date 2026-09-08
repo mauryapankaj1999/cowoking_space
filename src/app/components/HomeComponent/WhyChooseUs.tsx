@@ -7,6 +7,7 @@ import {
   FiShield,
   FiLayout,
 } from "react-icons/fi";
+import MainHeading from "../CommenHeading/MainHeading";
 
 const PRIMARY = "#003F2D";
 
@@ -51,13 +52,14 @@ const features = [
 export default function WhyChooseUs() {
   return (
     <section
-      className="px-6 py-16 sm:py-20 mt-12"
+      className="lg:px-6 px-4 py-16 sm:py-20 mt-12"
       style={{ backgroundColor: PRIMARY }}
     >
       <div className="mx-auto max-w-6xl">
-        <h2 className="text-3xl font-bold font-financierDisplay text-white sm:text-4xl">
+        <MainHeading title="Why choose FyndMySpace?"  white/>
+        {/* <h2 className="text-3xl font-bold font-financierDisplay text-white sm:text-4xl">
           Why choose FyndMySpace?
-        </h2>
+        </h2> */}
 
         <div className="mt-12 grid grid-cols-1 gap-x-12 gap-y-10 md:grid-cols-2">
           {features.map((feature, index) => {

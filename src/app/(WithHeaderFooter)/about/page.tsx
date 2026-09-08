@@ -129,7 +129,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="bg-white px-6 py-16 sm:py-20">
+      <section className="bg-white lg:px-6 px-4 py-16 sm:py-20">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2">
           <div className="rounded-2xl border border-slate-100 p-8 shadow-sm shadow-slate-200/50">
             <div
@@ -214,7 +214,7 @@ export default function AboutPage() {
       </section>
 
       {/* How It Works */}
-      <section className="bg-white px-6 py-16 sm:py-20">
+      <section className="bg-white lg:px-6 px-4 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl">
           <MainHeading title="How it works" />
 
