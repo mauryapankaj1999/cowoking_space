@@ -12,9 +12,11 @@ export default function FeaturedSpaces() {
   if (isLoading) {
     return (
       <>
+       <section className="bg-[#F9FBFC] lg:px-6 px-4 py-16 sm:py-12">
         <div className="mx-auto max-w-7xl">
           <CardLoading />
         </div>
+       </section>
       </>
     )
   }

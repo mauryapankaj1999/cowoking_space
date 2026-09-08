@@ -55,7 +55,6 @@ export default function Header() {
     >
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="flex items-center justify-between py-3">
-          {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5">
           <span
             className={`text-xl font-medium transition-colors duration-300 ${
@@ -130,7 +129,8 @@ export default function Header() {
               +91 991190 0230
             </a>
 
-            <button
+            <Link
+              href='/register'
               className={`rounded-md px-4 py-2 text-[13px] font-medium transition-all duration-300 ${
                 isTransparent
                   ? "bg-white text-slate-900 hover:bg-white/90"
@@ -138,7 +138,7 @@ export default function Header() {
               }`}
             >
               List your space
-            </button>
+            </Link>
           </div>
 
           <button
@@ -224,9 +224,9 @@ export default function Header() {
               +91 991190 0230
             </a>
 
-            <button className="mt-4 rounded-md bg-primary px-6 py-3 font-medium text-white">
+            <Link href='/register'  className="mt-4 rounded-md bg-primary px-6 py-3 font-medium text-white">
               List your space
-            </button>
+            </Link>
           </div>
         </div>
       )}
