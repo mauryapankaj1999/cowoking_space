@@ -12,7 +12,9 @@ export default function FeaturedSpaces() {
   if (isLoading) {
     return (
       <>
-      <CardLoading />
+        <div className="mx-auto max-w-7xl">
+          <CardLoading />
+        </div>
       </>
     )
   }
