@@ -7,17 +7,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import MainHeading from "../CommenHeading/MainHeading";
 
 export default function OurClientlogo() {
-  const ourclient = [
-    { id: 1, img: "/img/logo/partners-01.png" },
-    { id: 2, img: "/img/logo/partners-02.png" },
-    { id: 3, img: "/img/logo/partners-03.png" },
-    { id: 4, img: "/img/logo/partners-04.png" },
-    { id: 5, img: "/img/logo/partners-05.png" },
-    { id: 6, img: "/img/logo/partners-06.png" },
-    { id: 7, img: "/img/logo/partners-07.png" },
-    { id: 8, img: "/img/logo/partners-08.png" },
-    { id: 9, img: "/img/logo/partners-01.png" },
-    { id: 10, img: "/img/logo/partners-01.png" },
+ const ourclient = [
+    { id: 1, img: "/img/partner_logo/partner1.webp" },
+    { id: 2, img: "/img/partner_logo/partner2.webp" },
+    { id: 3, img: "/img/partner_logo/partner3.webp" },
+    { id: 4, img: "/img/partner_logo/partner4.webp" },
+    { id: 5, img: "/img/partner_logo/partner5.webp" },
+    { id: 6, img: "/img/partner_logo/partner6.webp" },
+    { id: 7, img: "/img/partner_logo/partner7.webp" },
   ];
 
   return (

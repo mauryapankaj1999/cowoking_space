@@ -27,7 +27,7 @@ export default function BlogDetails() {
       <div className="section-container">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-12 gap-4">
-            <div className="col-span-8">
+            <div className="col-span-12">
               <h2 className="font-semibold text-2xl mb-4">{blog.title}</h2>
               <div
                 className="prose m"
@@ -36,11 +36,11 @@ export default function BlogDetails() {
                 }}
               />
             </div>
-            <div className="col-span-4">
+            {/* <div className="col-span-4">
               <div className="sticky top-20">
                 <Enqueryform  data={data} />
               </div>
-            </div>
+            </div> */}
           </div>
           {/* <h2 className="font-semibold text-2xl mb-4">{blog.title}</h2>
           <div

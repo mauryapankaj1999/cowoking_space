@@ -28,8 +28,7 @@ export default function Header() {
   }, []);
 
   const { data: citiesData, isLoading: citiesLoading } = useCategories();
-  const { data: categoriesData, isLoading: categoriesLoading } =
-    useWorkspaceCategories();
+  const { data: categoriesData, isLoading: categoriesLoading } =useWorkspaceCategories();
   const { data: operatorsData, isLoading: operatorsLoading } = useOperators();
 
   const cities = citiesData?.data || [];

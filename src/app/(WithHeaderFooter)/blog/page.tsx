@@ -2,13 +2,19 @@
 import { useBlogs } from "@/hooks/useBlog";
 import react from "react";
 import Link from "next/link";
+import { CommenHeaderHeading } from "@/app/components/CorworkingSpaceCaption/CorworkingSpaceCaption";
 export default function Page() {
   const { data, isLoading, isError } = useBlogs();
 
   console.log(data, "data from blog section");
   return (
-    <div className="container mx-auto px-4 py-8 mt-12   ">
-      <section className="mx-auto mt-4 w-[100%] rounded-[30px] bg-[#0E2A2F] py-36 relative overflow-hidden">
+
+    <>
+    <div className="mt-[3.8rem]"></div>
+ <CommenHeaderHeading cityName="Blog" subheading="Explore insights, tips, and ideas to help you find and make the most
+      of the perfect workspace." />
+    <div className="container mx-auto px-4 py-8   ">
+      {/* <section className="mx-auto mt-4 w-[100%] rounded-[30px] bg-[#0E2A2F] py-36 relative overflow-hidden">
         <div className="flex flex-col items-center justify-center text-center">
           <h1 className="text-6xl font-semibold text-white">Blog</h1>
 
@@ -18,7 +24,7 @@ export default function Page() {
             <span className="font-medium">Blog</span>
           </div>
         </div>
-      </section>
+      </section> */}
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {data?.data?.map((blog: any) => (
@@ -48,5 +54,6 @@ export default function Page() {
         </div>
       </div>
     </div>
+    </>
   );
 }
