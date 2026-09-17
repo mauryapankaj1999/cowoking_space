@@ -148,9 +148,9 @@ export default function TermsPage() {
           +91 99119 00230
         </a>
       </p>
-      <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
+      {/* <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
         <strong>Email:</strong> [add your support/legal email]
-      </p>
+      </p> */}
     </div>
             </div>
             </>
