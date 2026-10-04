@@ -246,11 +246,6 @@ export default function WorkspaceDetailsPage({
 
   </div>
 </div>
-
-
-
-
-
       <div className="bg-white">
         <div className="mx-auto lg:max-w-7xl px-6 py-16">
           <FaqSection />

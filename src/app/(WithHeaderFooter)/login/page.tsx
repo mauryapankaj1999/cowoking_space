@@ -42,11 +42,10 @@ export default function LoginPage() {
 
     setSubmitting(true);
     try {
-      // TODO: backend ready hone par yaha login API call lagayenge
       console.log(form, "remember:", rememberMe);
       await new Promise((resolve) => setTimeout(resolve, 600));
 
-      router.push("/admin"); // admin panel ka route apna check kar lena
+      router.push("/admin"); 
     } catch (err) {
       console.error("Login failed", err);
       setError("Email ya Password galat hai");
@@ -68,7 +67,6 @@ export default function LoginPage() {
         <MainHeading title="Login" />
         <p className="mb-6 text-[13px] text-slate-500">
            after Login please access your workspace admin panel to manage your listings and bookings.
-          {/* Login karke apna workspace admin panel access karein. */}
         </p>
 
         {error && (

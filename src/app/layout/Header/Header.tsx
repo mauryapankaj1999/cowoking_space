@@ -3,14 +3,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { FiPhone, FiMenu, FiX } from "react-icons/fi";
-
-// import NavDropdown from "./NavDropdown";
 import { useCategories } from "@/hooks/useCategory";
 import { useOperators } from "@/hooks/useOperator";
 
 import NavDropdown from "@/app/components/NavDropdown";
-// import { useWorkspaceCategories } from "@/hooks/useworkspaceCategory";
 import { useWorkspaceCategories } from "@/hooks/useWorkspaceCategory";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -37,7 +35,6 @@ export default function Header() {
 
   const menus = [
     { title: "About Us", link: "/about" },
-    // { title: "Virtual Office", link: "/virtual-office" },
   ];
 
   const isTransparent = isHome && !scrolled;
@@ -116,17 +113,18 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Right side */}
           <div className="hidden lg:flex items-center gap-6">
-            <a
-              href="tel:+9911900230"
-              className={`flex items-center gap-2 text-[15px] font-medium transition-colors duration-300 hover:text-[#1764D8] ${
-                isTransparent ? "text-white" : "text-slate-700"
-              }`}
-            >
-              <FiPhone className="h-4 w-4" />
-              +91 991190 0230
-            </a>
+           {/* <a
+            href="https://wa.me/919911900230"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`flex items-center bg-primary px-4 py-2 gap-2 text-[15px] font-medium transition-colors duration-300 hover:text-[#1764D8] ${
+              isTransparent ? "text-white" : "text-slate-700"
+            }`}
+          >
+            <FaWhatsapp className="h-4 w-4" />
+            +91 991190 0230 adsf
+          </a> */}
 
             <Link
               href='/register'
@@ -219,7 +217,7 @@ export default function Header() {
               href="tel:+919911900230"
               className="mt-4 flex items-center gap-2 text-[15px] font-medium text-slate-700"
             >
-              <FiPhone className="h-4 w-4" />
+              <FaWhatsapp className="h-4 w-4" />
               +91 991190 0230
             </a>
 

@@ -238,11 +238,11 @@ export default function Footer() {
 
             <div className="flex flex-wrap items-center gap-6">
               <a
-                href="mailto:hello@worknest.in"
+                href="mailto:support@fyndmyspace.com"
                 className="flex items-center gap-2 text-sm text-white/90 transition"
               >
                 <FiMail className="h-4 w-4" />
-                hello@worknest.in
+                support@fyndmyspace.com
               </a>
 
               <a

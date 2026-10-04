@@ -1,9 +1,425 @@
 
+// "use client";
+
+// import { useState } from "react";
+// import { IoClose } from "react-icons/io5";
+// import { useCreateEnquiry } from "@/hooks/useEnquiry";
+// import ThankYouPopup from "../CommenComponent/ThankYouPopup";
+
+// interface Props {
+//   open: boolean;
+//   onClose: () => void;
+//   space: any;
+// }
+
+// const PRIMARY = "#003F2D";
+
+// export default function EnquiryModal({ open, onClose, space,}: Props) {
+//   const { mutate: createEnquiryMutation, isPending } = useCreateEnquiry();
+
+//   const [showThankYou, setShowThankYou] = useState(false);
+
+
+
+//   const [form, setForm] = useState({
+//     name: "",
+//     designation: "",
+//     companyName: "",
+//     workEmail: "",
+//     phone: "",
+//     seats: "",
+//     budget: "",
+//     preferredLocation: "",
+//     message: space
+//       ? `I'm interested in ${space?.title || ""} by ${
+//           space?.operator || ""
+//         } (${space?.location || ""}).`
+//       : "",
+//   });
+
+//   if (!open) return null;
+
+//   const handleChange = (
+//     field: string,
+//     value: string
+//   ) => {
+//     setForm((prev) => ({
+//       ...prev,
+//       [field]: value,
+//     }));
+//   };
+
+//   const handleSubmit = (
+//     e: React.FormEvent
+//   ) => {
+//     e.preventDefault();
+
+//     const payload = {
+//       name: form.name,
+//       designation: form.designation,
+//       companyName: form.companyName,
+//       email: form.workEmail,
+//       phone: form.phone,
+//       seats: form.seats,
+//       budget: form.budget,
+//       message: form.message,
+
+//       workspace:
+//         space?._id ||
+//         space?.id ||
+//         null,
+
+//       workspaceName:
+//         space?.title || "",
+
+//       operatorName:
+//         space?.operator || "",
+
+//       location:
+//         form.preferredLocation ||
+//         space?.location ||
+//         "",
+//     };
+
+//     console.log("Enquiry Payload:", payload);
+
+//     createEnquiryMutation(payload, {
+//       onSuccess: (response) => {
+//         console.log(
+//           "Enquiry submitted successfully:",
+//           response
+//         );
+
+//         alert(
+//           "Enquiry submitted successfully!"
+//         );
+
+//         onClose();
+
+//         setForm({
+//           name: "",
+//           designation: "",
+//           companyName: "",
+//           workEmail: "",
+//           phone: "",
+//           seats: "",
+//           budget: "",
+//           preferredLocation: "",
+//           message: space
+//             ? `I'm interested in ${
+//                 space?.title || ""
+//               } by ${
+//                 space?.operator || ""
+//               } (${space?.location || ""}).`
+//             : "",
+//         });
+//       },
+
+//       onError: (error: any) => {
+//         console.error(
+//           "Enquiry submission error:",
+//           error
+//         );
+
+//         alert(
+//           error?.response?.data?.message ||
+//             "Failed to submit enquiry. Please try again."
+//         );
+//       },
+//     });
+//   };
+
+//   return (
+//     <>
+//     <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 p-5">
+//       <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white lg:p-10 p-4">
+//         {/* Close */}
+//         <button
+//           onClick={onClose}
+//           disabled={isPending}
+//           className="absolute right-5 top-5 z-20 text-3xl text-slate-500 hover:text-slate-800"
+//         >
+//           <IoClose />
+//         </button>
+
+//         <h2 className="mb-1 text-lg font-semibold text-gray-900">
+//           Get a quote
+//           {space?.title
+//             ? ` for ${space.title}`
+//             : ""}
+//         </h2>
+
+//         <p className="mb-6 text-[13px] text-slate-500">
+//           Share your details and our team will
+//           reach out within one business day.
+//         </p>
+
+//         <form
+//           onSubmit={handleSubmit}
+//           className="space-y-4"
+//         >
+//           {/* Name & Designation */}
+//           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+//             <Field
+//               label="Name"
+//               required
+//               placeholder="Aanya Sharma"
+//               value={form.name}
+//               onChange={(v) =>
+//                 handleChange("name", v)
+//               }
+//             />
+
+//             <Field
+//               label="Designation"
+//               placeholder="Head of Operations"
+//               value={form.designation}
+//               onChange={(v) =>
+//                 handleChange(
+//                   "designation",
+//                   v
+//                 )
+//               }
+//             />
+//           </div>
+
+//           {/* Company & Email */}
+//           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+//             <Field
+//               label="Company Name"
+//               placeholder="Acme Labs"
+//               value={form.companyName}
+//               onChange={(v) =>
+//                 handleChange(
+//                   "companyName",
+//                   v
+//                 )
+//               }
+//             />
+
+//             <Field
+//               label="Work Email"
+//               type="email"
+//               placeholder="you@company.com"
+//               value={form.workEmail}
+//               onChange={(v) =>
+//                 handleChange(
+//                   "workEmail",
+//                   v
+//                 )
+//               }
+//             />
+//           </div>
+
+//           {/* Phone & Seats */}
+//           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+//             <Field
+//               label="Phone"
+//               required
+//               type="tel"
+//               placeholder="+91 98xxxxxxxx"
+//               value={form.phone}
+//               onChange={(v) =>
+//                 handleChange(
+//                   "phone",
+//                   v
+//                 )
+//               }
+//             />
+
+//             <div>
+//               <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-primary">
+//                 Seats Needed
+//               </label>
+
+//               <select
+//                 value={form.seats}
+//                 onChange={(e) =>
+//                   handleChange(
+//                     "seats",
+//                     e.target.value
+//                   )
+//                 }
+//                 className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+//               >
+//                 <option value="">
+//                   How many seats?
+//                 </option>
+
+//                 <option value="1 to 10">
+//                   1 to 10
+//                 </option>
+
+//                 <option value="11 to 50">
+//                   11 to 50
+//                 </option>
+
+//                 <option value="51 to 100">
+//                   51 to 100
+//                 </option>
+
+//                 <option value="ABOVE 100">
+//                   ABOVE 100
+//                 </option>
+//               </select>
+//             </div>
+//           </div>
+
+//           {/* Budget & Location */}
+//           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+//             <Field
+//               label="Budget (₹)"
+//               placeholder="e.g. 1,50,000 per month"
+//               value={form.budget}
+//               onChange={(v) =>
+//                 handleChange(
+//                   "budget",
+//                   v
+//                 )
+//               }
+//             />
+
+//             <div>
+//               <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-primary">
+//                 Preferred Location
+//               </label>
+
+//               <select
+//                 value={
+//                   form.preferredLocation
+//                 }
+//                 onChange={(e) =>
+//                   handleChange(
+//                     "preferredLocation",
+//                     e.target.value
+//                   )
+//                 }
+//                 className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+//               >
+//                 <option value="">
+//                   Select location
+//                 </option>
+
+//                 <option value="Delhi">
+//                   Delhi
+//                 </option>
+
+//                 <option value="Gurugram">
+//                   Gurugram
+//                 </option>
+
+//                 <option value="Noida">
+//                   Noida
+//                 </option>
+//               </select>
+//             </div>
+//           </div>
+
+//           {/* Message */}
+//           <div>
+//             <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-primary">
+//               Message
+//             </label>
+
+//             <textarea
+//               rows={3}
+//               value={form.message}
+//               onChange={(e) =>
+//                 handleChange(
+//                   "message",
+//                   e.target.value
+//                 )
+//               }
+//               className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+//             />
+//           </div>
+
+//           {/* Buttons */}
+//           <div className="flex items-center justify-end gap-3 pt-2">
+//             <button
+//               type="button"
+//               onClick={onClose}
+//               disabled={isPending}
+//               className="rounded-lg border border-slate-200 px-6 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
+//             >
+//               Cancel
+//             </button>
+
+//             <button
+//               type="submit"
+//               disabled={isPending}
+//               style={{
+//                 backgroundColor: PRIMARY,
+//               }}
+//               className="rounded-lg px-6 py-2.5 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+//             >
+//               {isPending
+//                 ? "Submitting..."
+//                 : "Get Quote"}
+//             </button>
+//           </div>
+//         </form>
+//       </div>
+//     </div>
+  
+  
+//     <ThankYouPopup
+//           open={showThankYou}
+//           onClose={() => setShowThankYou(false)}
+//           message="Thank You!"
+//           subMessage="We've received your tour request. Our team will contact you within one business day."
+//         />
+  
+//   </>
+//   );
+// }
+
+// function Field({
+//   label,
+//   value,
+//   onChange,
+//   placeholder,
+//   type = "text",
+//   required,
+// }: {
+//   label: string;
+//   value: string;
+//   onChange: (v: string) => void;
+//   placeholder?: string;
+//   type?: string;
+//   required?: boolean;
+// }) {
+//   return (
+//     <div>
+//       <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-primary">
+//         {label}{" "}
+//         {required && (
+//           <span className="text-red-500">
+//             *
+//           </span>
+//         )}
+//       </label>
+
+//       <input
+//         type={type}
+//         required={required}
+//         placeholder={placeholder}
+//         value={value}
+//         onChange={(e) =>
+//           onChange(e.target.value)
+//         }
+//         className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700 outline-none placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary"
+//       />
+//     </div>
+//   );
+// }
+
 "use client";
 
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { useCreateEnquiry } from "@/hooks/useEnquiry";
+import ThankYouPopup from "../CommenComponent/ThankYouPopup";
 
 interface Props {
   open: boolean;
@@ -13,13 +429,10 @@ interface Props {
 
 const PRIMARY = "#003F2D";
 
-export default function EnquiryModal({
-  open,
-  onClose,
-  space,
-}: Props) {
-  const { mutate: createEnquiryMutation, isPending } =
-    useCreateEnquiry();
+export default function EnquiryModal({ open, onClose, space }: Props) {
+  const { mutate: createEnquiryMutation, isPending } = useCreateEnquiry();
+
+  const [showThankYou, setShowThankYou] = useState(false);
 
   const [form, setForm] = useState({
     name: "",
@@ -39,19 +452,14 @@ export default function EnquiryModal({
 
   if (!open) return null;
 
-  const handleChange = (
-    field: string,
-    value: string
-  ) => {
+  const handleChange = (field: string, value: string) => {
     setForm((prev) => ({
       ...prev,
       [field]: value,
     }));
   };
 
-  const handleSubmit = (
-    e: React.FormEvent
-  ) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     const payload = {
@@ -64,37 +472,22 @@ export default function EnquiryModal({
       budget: form.budget,
       message: form.message,
 
-      workspace:
-        space?._id ||
-        space?.id ||
-        null,
+      workspace: space?._id || space?.id || null,
 
-      workspaceName:
-        space?.title || "",
+      workspaceName: space?.title || "",
 
-      operatorName:
-        space?.operator || "",
+      operatorName: space?.operator || "",
 
-      location:
-        form.preferredLocation ||
-        space?.location ||
-        "",
+      location: form.preferredLocation || space?.location || "",
     };
 
     console.log("Enquiry Payload:", payload);
 
     createEnquiryMutation(payload, {
       onSuccess: (response) => {
-        console.log(
-          "Enquiry submitted successfully:",
-          response
-        );
+        console.log("Enquiry submitted successfully:", response);
 
-        alert(
-          "Enquiry submitted successfully!"
-        );
-
-        onClose();
+        setShowThankYou(true); // 👈 alert() aur onClose() hataya, popup dikhega
 
         setForm({
           name: "",
@@ -106,9 +499,7 @@ export default function EnquiryModal({
           budget: "",
           preferredLocation: "",
           message: space
-            ? `I'm interested in ${
-                space?.title || ""
-              } by ${
+            ? `I'm interested in ${space?.title || ""} by ${
                 space?.operator || ""
               } (${space?.location || ""}).`
             : "",
@@ -116,10 +507,7 @@ export default function EnquiryModal({
       },
 
       onError: (error: any) => {
-        console.error(
-          "Enquiry submission error:",
-          error
-        );
+        console.error("Enquiry submission error:", error);
 
         alert(
           error?.response?.data?.message ||
@@ -130,236 +518,172 @@ export default function EnquiryModal({
   };
 
   return (
-    <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 p-5">
-      <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white lg:p-10 p-4">
-        {/* Close */}
-        <button
-          onClick={onClose}
-          disabled={isPending}
-          className="absolute right-5 top-5 z-20 text-3xl text-slate-500 hover:text-slate-800"
-        >
-          <IoClose />
-        </button>
+    <>
+      <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 p-5">
+        <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white lg:p-10 p-4">
+          {/* Close */}
+          <button
+            onClick={onClose}
+            disabled={isPending}
+            className="absolute right-5 top-5 z-20 text-3xl text-slate-500 hover:text-slate-800"
+          >
+            <IoClose />
+          </button>
 
-        <h2 className="mb-1 text-lg font-semibold text-gray-900">
-          Get a quote
-          {space?.title
-            ? ` for ${space.title}`
-            : ""}
-        </h2>
+          <h2 className="mb-1 text-lg font-semibold text-gray-900">
+            Get a quote
+            {space?.title ? ` for ${space.title}` : ""}
+          </h2>
 
-        <p className="mb-6 text-[13px] text-slate-500">
-          Share your details and our team will
-          reach out within one business day.
-        </p>
+          <p className="mb-6 text-[13px] text-slate-500">
+            Share your details and our team will reach out within one
+            business day.
+          </p>
 
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-4"
-        >
-          {/* Name & Designation */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <Field
-              label="Name"
-              required
-              placeholder="Aanya Sharma"
-              value={form.name}
-              onChange={(v) =>
-                handleChange("name", v)
-              }
-            />
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Name & Designation */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <Field
+                label="Name"
+                required
+                placeholder="Aanya Sharma"
+                value={form.name}
+                onChange={(v) => handleChange("name", v)}
+              />
 
-            <Field
-              label="Designation"
-              placeholder="Head of Operations"
-              value={form.designation}
-              onChange={(v) =>
-                handleChange(
-                  "designation",
-                  v
-                )
-              }
-            />
-          </div>
+              <Field
+                label="Designation"
+                placeholder="Head of Operations"
+                value={form.designation}
+                onChange={(v) => handleChange("designation", v)}
+              />
+            </div>
 
-          {/* Company & Email */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <Field
-              label="Company Name"
-              placeholder="Acme Labs"
-              value={form.companyName}
-              onChange={(v) =>
-                handleChange(
-                  "companyName",
-                  v
-                )
-              }
-            />
+            {/* Company & Email */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <Field
+                label="Company Name"
+                placeholder="Acme Labs"
+                value={form.companyName}
+                onChange={(v) => handleChange("companyName", v)}
+              />
 
-            <Field
-              label="Work Email"
-              type="email"
-              placeholder="you@company.com"
-              value={form.workEmail}
-              onChange={(v) =>
-                handleChange(
-                  "workEmail",
-                  v
-                )
-              }
-            />
-          </div>
+              <Field
+                label="Work Email"
+                type="email"
+                placeholder="you@company.com"
+                value={form.workEmail}
+                onChange={(v) => handleChange("workEmail", v)}
+              />
+            </div>
 
-          {/* Phone & Seats */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <Field
-              label="Phone"
-              required
-              type="tel"
-              placeholder="+91 98xxxxxxxx"
-              value={form.phone}
-              onChange={(v) =>
-                handleChange(
-                  "phone",
-                  v
-                )
-              }
-            />
+            {/* Phone & Seats */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <Field
+                label="Phone"
+                required
+                type="tel"
+                placeholder="+91 98xxxxxxxx"
+                value={form.phone}
+                onChange={(v) => handleChange("phone", v)}
+              />
 
+              <div>
+                <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-primary">
+                  Seats Needed
+                </label>
+
+                <select
+                  value={form.seats}
+                  onChange={(e) => handleChange("seats", e.target.value)}
+                  className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                >
+                  <option value="">How many seats?</option>
+                  <option value="1 to 10">1 to 10</option>
+                  <option value="11 to 50">11 to 50</option>
+                  <option value="51 to 100">51 to 100</option>
+                  <option value="ABOVE 100">ABOVE 100</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Budget & Location */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <Field
+                label="Budget (₹)"
+                placeholder="e.g. 1,50,000 per month"
+                value={form.budget}
+                onChange={(v) => handleChange("budget", v)}
+              />
+
+              <div>
+                <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-primary">
+                  Preferred Location
+                </label>
+
+                <select
+                  value={form.preferredLocation}
+                  onChange={(e) =>
+                    handleChange("preferredLocation", e.target.value)
+                  }
+                  className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                >
+                  <option value="">Select location</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Gurugram">Gurugram</option>
+                  <option value="Noida">Noida</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Message */}
             <div>
               <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-primary">
-                Seats Needed
+                Message
               </label>
 
-              <select
-                value={form.seats}
-                onChange={(e) =>
-                  handleChange(
-                    "seats",
-                    e.target.value
-                  )
-                }
-                className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-              >
-                <option value="">
-                  How many seats?
-                </option>
-
-                <option value="1 to 10">
-                  1 to 10
-                </option>
-
-                <option value="11 to 50">
-                  11 to 50
-                </option>
-
-                <option value="51 to 100">
-                  51 to 100
-                </option>
-
-                <option value="ABOVE 100">
-                  ABOVE 100
-                </option>
-              </select>
+              <textarea
+                rows={3}
+                value={form.message}
+                onChange={(e) => handleChange("message", e.target.value)}
+                className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+              />
             </div>
-          </div>
 
-          {/* Budget & Location */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <Field
-              label="Budget (₹)"
-              placeholder="e.g. 1,50,000 per month"
-              value={form.budget}
-              onChange={(v) =>
-                handleChange(
-                  "budget",
-                  v
-                )
-              }
-            />
-
-            <div>
-              <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-primary">
-                Preferred Location
-              </label>
-
-              <select
-                value={
-                  form.preferredLocation
-                }
-                onChange={(e) =>
-                  handleChange(
-                    "preferredLocation",
-                    e.target.value
-                  )
-                }
-                className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+            {/* Buttons */}
+            <div className="flex items-center justify-end gap-3 pt-2">
+              <button
+                type="button"
+                onClick={onClose}
+                disabled={isPending}
+                className="rounded-lg border border-slate-200 px-6 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                <option value="">
-                  Select location
-                </option>
+                Cancel
+              </button>
 
-                <option value="Delhi">
-                  Delhi
-                </option>
-
-                <option value="Gurugram">
-                  Gurugram
-                </option>
-
-                <option value="Noida">
-                  Noida
-                </option>
-              </select>
+              <button
+                type="submit"
+                disabled={isPending}
+                style={{ backgroundColor: PRIMARY }}
+                className="rounded-lg px-6 py-2.5 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {isPending ? "Submitting..." : "Get Quote"}
+              </button>
             </div>
-          </div>
-
-          {/* Message */}
-          <div>
-            <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-primary">
-              Message
-            </label>
-
-            <textarea
-              rows={3}
-              value={form.message}
-              onChange={(e) =>
-                handleChange(
-                  "message",
-                  e.target.value
-                )
-              }
-              className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-            />
-          </div>
-
-          {/* Buttons */}
-          <div className="flex items-center justify-end gap-3 pt-2">
-            <button
-              type="button"
-              onClick={onClose}
-              disabled={isPending}
-              className="rounded-lg border border-slate-200 px-6 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              Cancel
-            </button>
-
-            <button
-              type="submit"
-              disabled={isPending}
-              style={{
-                backgroundColor: PRIMARY,
-              }}
-              className="rounded-lg px-6 py-2.5 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              {isPending
-                ? "Submitting..."
-                : "Get Quote"}
-            </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
+
+      <ThankYouPopup
+        open={showThankYou}
+        onClose={() => {
+          setShowThankYou(false);
+          onClose(); // 👈 popup band hote hi enquiry modal bhi band
+        }}
+        message="Thank You!"
+        subMessage="We've received your enquiry. Our team will contact you within one business day."
+      />
+    </>
   );
 }
 
@@ -381,12 +705,7 @@ function Field({
   return (
     <div>
       <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-primary">
-        {label}{" "}
-        {required && (
-          <span className="text-red-500">
-            *
-          </span>
-        )}
+        {label} {required && <span className="text-red-500">*</span>}
       </label>
 
       <input
@@ -394,9 +713,7 @@ function Field({
         required={required}
         placeholder={placeholder}
         value={value}
-        onChange={(e) =>
-          onChange(e.target.value)
-        }
+        onChange={(e) => onChange(e.target.value)}
         className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700 outline-none placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary"
       />
     </div>
