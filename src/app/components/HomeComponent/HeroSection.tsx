@@ -9,11 +9,11 @@
 //   FiUsers,
 //   FiMapPin,
 //   FiX,
-//   FiCheck,
 // } from "react-icons/fi";
 // import ComfortableSpaces from "./ComfortableSpaces";
 // import { useCategories } from "@/hooks/useCategory";
 // import MainHeading from "../CommenHeading/MainHeading";
+// import ThankYouPopup from "../CommenComponent/ThankYouPopup";
 
 // const CITY_OPTIONS = ["Delhi", "Noida", "Gurgaon"];
 // const PRIMARY = "#003F2D";
@@ -48,7 +48,7 @@
 //   const [modalOpen, setModalOpen] = useState(false);
 //   const [modalVisible, setModalVisible] = useState(false);
 //   const [submitting, setSubmitting] = useState(false);
-//   const [submitted, setSubmitted] = useState(false);
+//   const [showThankYou, setShowThankYou] = useState(false);
 
 //   const { data } = useCategories();
 //   const categories: Category[] = data?.data || [];
@@ -93,9 +93,8 @@
 //       console.log(form);
 //       await new Promise((resolve) => setTimeout(resolve, 600));
 
-//       setSubmitted(true);
 //       setForm(emptyForm);
-//       setTimeout(() => setSubmitted(false), 3000);
+//       setShowThankYou(true); // 👈 form submit hote hi popup
 //     } catch (error) {
 //       console.error("Failed to submit tour request", error);
 //     } finally {
@@ -112,8 +111,8 @@
 //             onSubmit={handleSubmit}
 //             className="rounded-3xl border border-white/60 bg-white p-6 shadow-xl shadow-slate-200/60 sm:p-8"
 //           >
-//           <MainHeading title="Book a free tour" />
-    
+//             <MainHeading title="Book a free tour" />
+
 //             <p className="mb-6 text-[13px] text-slate-500 mt-2">
 //               Share your details and our team will reach out within one
 //               business day.
@@ -180,6 +179,7 @@
 //                     <option>11 to 30</option>
 //                     <option>31 to 50</option>
 //                     <option>50 to 100</option>
+//                     <option>100 above</option>
 //                   </select>
 //                 </div>
 
@@ -206,19 +206,10 @@
 //             <button
 //               type="submit"
 //               disabled={submitting}
-//               style={{ backgroundColor: PRIMARY }}
-//               className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-white transition hover:opacity-90 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+//               // style={{ backgroundColor: PRIMARY }}
+//               className="mt-6 bg-primary flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-white transition hover:opacity-90 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
 //             >
-//               {submitted ? (
-//                 <>
-//                   <FiCheck className="h-4 w-4" />
-//                   Request Sent
-//                 </>
-//               ) : submitting ? (
-//                 "Sending..."
-//               ) : (
-//                 "Get a Callback"
-//               )}
+//               {submitting ? "Sending..." : "Get a Callback"}
 //             </button>
 //           </form>
 //         </div>
@@ -287,6 +278,13 @@
 //           </div>
 //         </div>
 //       )}
+
+//       <ThankYouPopup
+//         open={showThankYou}
+//         onClose={() => setShowThankYou(false)}
+//         message="Thank You!"
+//         subMessage="We've received your tour request. Our team will contact you within one business day."
+//       />
 //     </section>
 //   );
 // }
@@ -327,15 +325,15 @@
 //         minLength={minLength}
 //         pattern={pattern}
 //         title={title}
-//         // className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700 outline-none placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary"
-
 //         className="w-full bg-transparent text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none"
 //       />
 //     </div>
 //   );
 // }
 
+
 "use client";
+
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -347,8 +345,10 @@ import {
   FiMapPin,
   FiX,
 } from "react-icons/fi";
+
 import ComfortableSpaces from "./ComfortableSpaces";
 import { useCategories } from "@/hooks/useCategory";
+import { useCreateEnquiry } from "@/hooks/useEnquiry";
 import MainHeading from "../CommenHeading/MainHeading";
 import ThankYouPopup from "../CommenComponent/ThankYouPopup";
 
@@ -384,18 +384,25 @@ export default function HeroSection() {
   const [form, setForm] = useState<TourForm>(emptyForm);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
+
+  const {
+    mutate: createEnquiryMutation,
+    isPending: submitting,
+  } = useCreateEnquiry();
 
   const { data } = useCategories();
   const categories: Category[] = data?.data || [];
 
   useEffect(() => {
     if (!modalOpen) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeModal();
     };
+
     window.addEventListener("keydown", handleKeyDown);
+
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [modalOpen]);
 
@@ -413,7 +420,9 @@ export default function HeroSection() {
     const match = categories.find(
       (c) => c.name?.toLowerCase() === city.toLowerCase()
     );
+
     closeModal();
+
     router.push(`/coworking/${match?.slug || city.toLowerCase()}`);
   };
 
@@ -421,28 +430,49 @@ export default function HeroSection() {
     setForm((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Submit tour enquiry using the existing enquiry API
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (submitting) return;
 
-    setSubmitting(true);
-    try {
-      console.log(form);
-      await new Promise((resolve) => setTimeout(resolve, 600));
+    const payload = {
+      name: form.name.trim(),
+      designation: "",
+      companyName: form.companyName.trim(),
+      email: form.workEmail.trim(),
+      phone: form.phone.trim(),
+      seats: form.seats,
+      budget: "",
+      message: "I would like to book a free coworking space tour.",
+      workspace: null,
+      workspaceName: "",
+      operatorName: "",
+      location: form.preferredLocation,
+    };
 
-      setForm(emptyForm);
-      setShowThankYou(true); // 👈 form submit hote hi popup
-    } catch (error) {
-      console.error("Failed to submit tour request", error);
-    } finally {
-      setSubmitting(false);
-    }
+    createEnquiryMutation(payload, {
+      onSuccess: (response) => {
+        console.log("Tour enquiry submitted successfully:", response);
+
+        setForm(emptyForm);
+        setShowThankYou(true);
+      },
+
+      onError: (error: any) => {
+        console.error("Tour enquiry submission failed:", error);
+
+        alert(
+          error?.response?.data?.message ||
+            "Failed to submit your request. Please try again."
+        );
+      },
+    });
   };
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-amber-50 via-orange-50/40 to-blue-50 lg:px-6 px-4 py-14 sm:py-20 lg:py-12">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        {/* LEFT — Form */}
         <div>
           <form
             onSubmit={handleSubmit}
@@ -504,6 +534,7 @@ export default function HeroSection() {
               <div className="grid grid-cols-2 gap-3">
                 <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 transition focus-within:border-[#003F2D]">
                   <FiUsers className="h-4 w-4 shrink-0 text-slate-400" />
+
                   <select
                     aria-label="Seats needed"
                     value={form.seats}
@@ -516,11 +547,13 @@ export default function HeroSection() {
                     <option>11 to 30</option>
                     <option>31 to 50</option>
                     <option>50 to 100</option>
+                    <option>100 above</option>
                   </select>
                 </div>
 
                 <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 transition focus-within:border-[#003F2D]">
                   <FiMapPin className="h-4 w-4 shrink-0 text-slate-400" />
+
                   <select
                     aria-label="Preferred location"
                     value={form.preferredLocation}
@@ -550,18 +583,22 @@ export default function HeroSection() {
           </form>
         </div>
 
+        {/* Comfortable Spaces */}
         <div
           role="button"
           tabIndex={0}
           aria-label="Choose your city to explore coworking spaces"
           className="relative cursor-pointer"
           onClick={openModal}
-          onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && openModal()}
+          onKeyDown={(e) =>
+            (e.key === "Enter" || e.key === " ") && openModal()
+          }
         >
           <ComfortableSpaces />
         </div>
       </div>
 
+      {/* City Selection Modal */}
       {modalOpen && (
         <div
           className={`fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm transition-opacity duration-200 ${
@@ -579,6 +616,7 @@ export default function HeroSection() {
             }`}
           >
             <button
+              type="button"
               onClick={closeModal}
               aria-label="Close"
               className="absolute right-4 top-4 text-slate-400 transition hover:text-slate-700"
@@ -592,6 +630,7 @@ export default function HeroSection() {
             >
               Choose a city
             </p>
+
             <h3
               id="city-modal-title"
               className="mb-6 text-xl font-bold text-slate-900"
@@ -602,12 +641,16 @@ export default function HeroSection() {
             <div className="space-y-3">
               {CITY_OPTIONS.map((city) => (
                 <button
+                  type="button"
                   key={city}
                   onClick={() => handleCitySelect(city)}
                   className="flex w-full items-center justify-between rounded-xl border border-slate-200 bg-white px-5 py-3.5 text-left text-sm font-medium text-slate-700 transition hover:border-[#003F2D] hover:bg-slate-50"
                 >
                   {city}
-                  <FiMapPin className="h-4 w-4" style={{ color: PRIMARY }} />
+                  <FiMapPin
+                    className="h-4 w-4"
+                    style={{ color: PRIMARY }}
+                  />
                 </button>
               ))}
             </div>
@@ -615,6 +658,7 @@ export default function HeroSection() {
         </div>
       )}
 
+      {/* Success Popup */}
       <ThankYouPopup
         open={showThankYou}
         onClose={() => setShowThankYou(false)}
@@ -649,8 +693,9 @@ function IconField({
   title?: string;
 }) {
   return (
-    <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 px-4 py-3 transition focus-within:border-[#003F2D]">
+    <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 transition focus-within:border-[#003F2D]">
       {icon}
+
       <input
         type={type}
         aria-label={ariaLabel}

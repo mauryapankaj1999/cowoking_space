@@ -100,7 +100,7 @@ export default function Header() {
 
           
 
-            {menus.map((item, index) => (
+            {/* {menus.map((item, index) => (
               <Link
                 key={index}
                 href={item.link}
@@ -110,7 +110,7 @@ export default function Header() {
               >
                 {item.title}
               </Link>
-            ))}
+            ))} */}
           </nav>
 
           <div className="hidden lg:flex items-center gap-6">

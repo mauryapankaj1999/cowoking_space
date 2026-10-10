@@ -19,6 +19,7 @@ const lookingForOptions = [
 
 export default function VideoSection() {
   const router = useRouter();
+  const [videoReady, setVideoReady] = useState(false);
 
   const [lookingFor, setLookingFor] = useState(lookingForOptions[0]);
   const [lookingOpen, setLookingOpen] = useState(false);
@@ -39,16 +40,45 @@ export default function VideoSection() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      <video
+      {/* <video
         autoPlay
         loop
-        muted
-        playsInline
+        // muted
+      muted
+  playsInline
+  preload="none"
+  poster="/img/prosterimg.webp"
+ 
+
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/img/video22.mp4" type="video/mp4" />
+        <source src="/img/prosterimg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
-      </video>
+      </video> */}
+    <div className="absolute inset-0 h-full w-full overflow-hidden">
+
+  <img
+    src="/img/newposterimg.webp"
+    alt=""
+    fetchPriority="high"
+    className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
+      videoReady ? "opacity-0" : "opacity-100"
+    }`}
+  />
+
+
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    preload="auto"
+    onCanPlay={() => setVideoReady(true)}
+    className="absolute inset-0 h-full w-full object-cover"
+  >
+    <source src="/img/video22.mp4" type="video/mp4" />
+  </video>
+</div>
 
       <div className="absolute inset-0 bg-black/40 z-10"></div>
 

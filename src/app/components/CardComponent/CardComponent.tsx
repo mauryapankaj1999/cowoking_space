@@ -251,11 +251,11 @@ export default function CardComponent({ item }: any) {
             </h3>
 
             <div className="flex items-center gap-1">
-              <FaStar className="text-yellow-500" />
+              {/* <FaStar className="text-yellow-500" />
 
               <span className="text-sm font-semibold">
                 {item.rating}
-              </span>
+              </span> */}
             </div>
           </div>
 
