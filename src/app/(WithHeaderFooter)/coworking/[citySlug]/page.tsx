@@ -404,6 +404,7 @@ import { useCategoryBySlug } from "@/hooks/useCategory";
 import { useSubCategoriesByCitySlug } from "@/hooks/useSubCategory";
 import { useWorkspacesBySlug } from "@/hooks/useWorkspace";
 import CorworkingSpaceCaption from "@/app/components/CorworkingSpaceCaption/CorworkingSpaceCaption";
+import AutoPopup from "@/app/components/AutoPopup/AutoPopup";
 import CardLoading from "@/app/components/CardLoading";
 
 export default function Page() {
@@ -499,6 +500,8 @@ export default function Page() {
 
   return (
     <>
+<AutoPopup />
+    
       <div className="mt-[3.8rem]">
         <CorworkingSpaceCaption cityName={cityName} />
 
