@@ -10,7 +10,12 @@ export const metadata: Metadata = {
   title: "Fynd My Space - Find Your Perfect Workspace",
   description:
     "Discover the ideal workspace with Fynd My Space. Explore coworking spaces, private offices, and meeting rooms tailored to your needs. Book your perfect workspace today!",
-};
+
+
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },  };
 
 export default function RootLayout({
   children,
